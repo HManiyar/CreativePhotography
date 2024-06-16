@@ -1,0 +1,44 @@
+﻿@using CreativePhotography.Content
+@{
+    ViewData["Title"] = "Traditional";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+
+<div class="row mb-3">
+    <div class="col-12 text-center">
+        <h2 class="heading">@PageHeaders.Traditional</h2>
+    </div>
+</div>
+<section class="site-section">
+<div class="container">
+    @{
+        // Define an array of image names for Traditional
+        string[] imageNames = new string[] { "Traditional_Album_1.jpg"};
+        // Define an array of links for each header
+        string[] headerLinks = new string[] {
+            Url.Action("TraditionalLayout1", "AlbumDesign")?? "",
+            //Url.Action("TraditionalLayout2", "AlbumDesign")?? "",
+            //Url.Action("TraditionalLayout3", "AlbumDesign")?? ""
+        };
+        // Update text headers array for Traditional
+        string[] textheaders = new string[] { "Traditional" };
+    }
+
+    <div class="row justify-content-center">
+        @for(int i = 0; i < imageNames.Length; i++)
+        {
+            <div class="col-md-4 mb-3 text-center">
+                <div>
+                    <!-- Thumbnail with clickable link -->
+                    <a href="@headerLinks[i]">
+                        <!-- Image preview -->
+                     <img src="/images/Thumbnails/Sub_Album_Thumbnail/Traditional_Album_Thumbanails/@imageNames[i]" style="max-width: 100%; height: auto;" alt="Image @(i + 1)">
+                    </a>
+                    <!-- Text header -->
+                    <h5 class="mt-2"><a href="@headerLinks[i]" style="color: black; font-weight: bold;">@Html.Raw(textheaders[0])</a></h5>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</section>

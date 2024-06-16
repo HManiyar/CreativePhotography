@@ -1,0 +1,70 @@
+﻿@using CreativePhotography.Content
+@{
+    ViewData["Title"] = "Photography";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+
+<div class="row mb-3">
+	<div class="col-12 text-center">
+		<h2 class="heading">@PageHeaders.PhotoGraphy</h2>
+	</div>
+</div>
+<section class="site-section">
+<div class="container">
+    @{
+        // Define an array of image names
+        string[] imageNames = new string[] { 
+            "Pre_Wed.jpg", "Engagement.jpg", "Wed.jpg",
+            "BabyBump.jpg", "Bday.jpg", "Decoration.jpg"
+        };
+
+        // Define an array of text headers
+        string[] textheaders = new string[] { 
+            "Pre-Wedding", "Engagement", "Wed", 
+            "Maternity Shoot", "Birthday", "Decoration" 
+        };
+
+        // Prepare the text descriptions for each category
+        string[] imageTexts = new string[] {
+            "Capture the essence of your love before the big day. Our pre-wedding photography sessions offer intimate and memorable moments for you and your partner.",
+            "Celebrate the joy of engagement with elegant and heartwarming photographs. Our engagement sessions capture the excitement and anticipation of your journey together.",
+            "Relive the magic of your wedding day with our exquisite wedding photography. We specialize in capturing every precious moment, ensuring your memories last a lifetime.",
+            "Welcome your bundle of joy with adorable baby shower photography. Our photographers will capture the love and excitement surrounding this special occasion.",
+            "Celebrate life's milestones with vibrant birthday photography. From the first birthday to milestone celebrations, we'll capture the joy and excitement of each moment.",
+            "Transform your event with stunning decoration photography. From floral arrangements to intricate details, we'll capture the beauty and elegance of your decorations."
+        };
+
+        // Define an array of links for each header
+        string[] headerLinks = new string[] {
+            Url.Action("PreWedding", "Photography") ?? "",
+            Url.Action("Engagement", "Photography") ?? "",
+            Url.Action("Wedding", "Photography") ?? "",
+            Url.Action("BabyShower", "Photography") ?? "",
+            Url.Action("Birthday", "Photography") ?? "",
+            Url.Action("Decoration", "Photography") ?? ""
+        };
+
+    }
+
+@for (int i = 0; i < imageNames.Length; i++)
+{
+    <div class="row mb-3"> 
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <a href="@headerLinks[i]">
+                <img src="/images/@imageNames[i]" class="img-fluid img-thumbnail mb-4" alt="Image @(i + 1)">
+                <!-- Added mb-4 class to add margin bottom to the image -->
+            </a>
+        </div>
+        <div class="col-md-6">
+            <!-- Text header -->
+            <h5 style="margin-top: 20px;"><a href="@headerLinks[i]" style="color: black; font-weight: bold;">@Html.Raw(textheaders[i])</a></h5>
+            <!-- Added margin-top to create space between image and text header -->
+            <!-- Paragraph text -->
+            <p class="text-justify">@Html.Raw(imageTexts[i])</p>
+        </div>
+    </div>
+}
+
+
+</div>
+</section>

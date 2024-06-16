@@ -1,0 +1,55 @@
+﻿@using CreativePhotography.Content
+@{
+    ViewData["Title"] = "Remove Image";
+    Layout = "~/Views/Shared/_SharedAdminView.cshtml";
+    string[] imagePaths = (ViewBag.ImagePaths as string[]) ?? Array.Empty<string>();
+    //int pageNumber = ViewBag.PageNumber;
+    //int totalPages = ViewBag.TotalPages;
+}
+  <script src="/js/jquery-3.3.1.min.js"></script> 
+<script src="/js/CustomJS/RemoveImage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<style>
+    .delete-icon {
+       /* position: absolute;*/
+        bottom: 40px; /* Adjust this value to change the distance from the bottom */
+        right: 5px; /* Adjust this value to change the distance from the right */
+        font-size: 24px; 
+        color: red; /* Color of the delete icon */
+        cursor: pointer;
+    }
+  
+</style>
+<div class="row mb-3">
+    <div class="col-12 text-center">
+        <h2 class="heading">@PageHeaders.RemoveImages</h2>
+    </div>
+</div>
+<section class="site-section">
+<div class="container">
+    <form id="uploadForm" method="post" enctype="multipart/form-data" action="@Url.Action("HandleRemove", "Admin")">
+        <div class="form-group">
+            <label for="categoryRMSelect">Category:</label>
+            <select id="categoryRMSelect" class="form-control">
+                <option value="0" selected>None</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subCategoryRMSelect">SubCategory:</label>
+            <select id="subCategoryRMSelect" class="form-control">
+                <option value="0" selected>None</option>
+            </select>
+        </div>
+        <button id="searchButton" type="button" class="btn btn-primary" style="margin-bottom: 20px;">Search</button>
+    </form>
+</div>
+
+<div class="row align-items-stretch photos" id="section-photos">
+    <!-- Images will be dynamically rendered here -->
+</div>
+
+<div class="pagination-container mt-5">
+    <!-- Pagination will be dynamically rendered here -->
+</div>
+</section>

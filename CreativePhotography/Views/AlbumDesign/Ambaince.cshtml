@@ -1,0 +1,44 @@
+﻿@using CreativePhotography.Content
+@{
+    ViewData["Title"] = "Ambiance";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+
+<div class="row mb-3">
+    <div class="col-12 text-center">
+        <h2 class="heading">@PageHeaders.Ambiance</h2>
+    </div>
+</div>
+<section class="site-section">
+<div class="container">
+    @{
+        // Define an array of image names for Ambiance
+        string[] imageNames = new string[] { "Ambiance_Album_1.jpg", "Ambiance_Album_2.jpg", "Ambiance_Album_3.jpg" };
+        // Define an array of links for each header
+        string[] headerLinks = new string[] {
+            Url.Action("AmbianceLayout1", "AlbumDesign")?? "",
+            Url.Action("AmbianceLayout2", "AlbumDesign")?? "",
+            Url.Action("AmbianceLayout3", "AlbumDesign")?? ""
+        };
+        // Define an array of text headers, assuming you want each under its image
+        string[] textheaders = new string[] { "Ambiance" };
+    }
+
+    <div class="row justify-content-center">
+        @for(int i = 0; i < imageNames.Length; i++)
+        {
+            <div class="col-md-4 mb-3 text-center">
+                <div>
+                    <!-- Thumbnail with clickable link -->
+                    <a href="@headerLinks[i]">
+                        <!-- Image preview -->
+                        <img src="/images/Thumbnails/Sub_Album_Thumbnail/Ambiance_Album_Thumbnails/@imageNames[i]" class="img-fluid img-thumbnail" alt="Image @(i + 1)">
+                    </a>
+                    <!-- Text header -->
+                    <h5 class="mt-2"><a href="@headerLinks[i]" style="color: black; font-weight: bold;">@Html.Raw(textheaders[0])</a></h5>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</section>

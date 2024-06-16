@@ -1,0 +1,178 @@
+﻿@using CreativePhotography.Content
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="@WebsiteData.webTitle">
+    <link rel="shortcut icon" href="/creativedesigner.jpg">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900|Oswald:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>@WebsiteData.webTitle</title>
+    <style>
+    .custom-loader {
+        border: 8px solid #ffffff;
+        border-top: 8px solid #efd686;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999999; /* Highest possible value for z-index */
+        background-color: rgba(255, 255, 255, 0.48); /* Semi-transparent white background */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
+        display: none; /* Initially hide the loader */
+    }
+
+    /* Animation for the loader */
+    @@keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Background overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        z-index: 99999; /* Place overlay behind loader */
+        display: none; /* Initially hide the overlay */
+    }
+</style>
+
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
+    <div class="overlay"></div> 
+  <div class="custom-loader"></div>
+     <div class="site-wrap" style="display: flex; flex-direction: column; min-height: 100vh;">
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%; margin-bottom: 20px;">
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">@WebsiteData.webTitle</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.Home ? "active" : "")" href="@Url.Action("Index","Home")">@PageHeaders.Home</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.About ? "active" : "")" href="@Url.Action("About","Home")">@PageHeaders.About</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "active" : "")" href="@Url.Action("AlbumDesign","Home")">@PageHeaders.AlbumDesign</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "active" : "")" href="@Url.Action("Photography","Home")">@PageHeaders.PhotoGraphy</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "active" : "")" href="@Url.Action("PhotoEditing","Home")">@PageHeaders.PhotoEditing</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "active" : "")" href="@Url.Action("CollageDesign","Home")">@PageHeaders.CollageDesign</a></li>
+            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.Videos ? "active" : "")" href="@Url.Action("Videos","Home")">@PageHeaders.Videos</a></li>
+        </ul>
+        <!-- Add a new div for social media icons with responsive classes and spacing -->
+        <div class="navbar-nav ml-auto d-flex flex-row justify-content-start align-items-center">
+            <a class="nav-link mx-1" href="https://www.instagram.com/creativephotographybychetan/"><span class="icon-instagram"></span></a>
+            <a class="nav-link mx-1" href="https://www.facebook.com/chetandalwadiphotography/"><span class="icon-facebook"></span></a>
+            <a class="nav-link btn btn-danger btn-md smoothscroll mx-1" href="#section-contact" style="color: white;">Book Now</a>
+        </div>
+
+    </div>
+</nav>
+     <main class="main-content" style="flex-grow: 1; display: flex; justify-content: center; align-items: center; width: 100%;">
+            <div class="container-fluid site-section">
+                @RenderBody()
+                <div class="row justify-content-center">
+                    <div class="col-md-12 text-center py-5">
+                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; @WebsiteData.webTitle
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+         <div class="site-section">
+            <section class="site-section" id="section-contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <h2 class="mb-5 heading text-center">Contact</h2>
+                            <form action="#">
+                                <div class="row form-group">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label class="" for="fname">First Name</label>
+                                        <input type="text" id="fname" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="" for="lname">Last Name</label>
+                                        <input type="text" id="lname" class="form-control">
+                                    </div>
+                                </div>
+                                 <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label class="" for="contact">Contact Number</label>
+                                        <input type="number" id="contact" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label class="" for="email">Email</label>
+                                        <input type="email" id="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <label class="" for="subject">Subject</label>
+                                        <input type="text" id="subject" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group mb-5">
+                                    <div class="col-md-12">
+                                        <label class="" for="message">Message</label>
+                                        <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-12">
+                                        <input type="submit" value="Send Message" class="btn btn-primary btn-md">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/lozad.min.js"></script>
+    <script src="/js/jquery.fancybox.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/CustomJS/Home.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-menu-toggle').click(function () {
+                $('.main-menu').toggleClass('show');
+            });
+        });
+    </script>
+</body>
+</html>

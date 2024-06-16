@@ -1,0 +1,64 @@
+﻿@using CreativePhotography.Content
+
+@{
+	Layout = "~/Views/Shared/_SharedUserView.cshtml";
+	string[] originalImagePaths = (ViewBag.OriginalImagePaths as string[]) ?? Array.Empty<string>();
+	string[] compressedImagePaths = (ViewBag.CompressedImagePaths as string[]) ?? Array.Empty<string>();
+	int pageNumber = ViewBag.PageNumber;
+	int totalPages = ViewBag.TotalPages;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="~/css/customcss/FlexibleImageGalleryStyles.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="col-12 text-center">
+		<h2 class="heading">@PageHeaders.Traditional</h2>
+	</div>
+	<div class="album-container">
+		<div class="album-inner">
+			@for (int i = 0; i < originalImagePaths.Length; i++)
+			{
+				<div class="album-item">
+					<a href="@Url.Content(originalImagePaths[i])" data-fancybox="gallery">
+						<img src="@Url.Content(originalImagePaths[i])" alt="Image" class="img-fluid mb-0">
+					</a>
+				</div>
+			}
+		</div>
+	</div>
+	<div class="pagination-container mt-5">
+		<!-- Adjusted margin top to mt-5 -->
+		@if (totalPages > 1)
+		{
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					@if (pageNumber > 1)
+					{
+						<li class="page-item">
+							<a class="page-link" href="@Url.Action("TraditionalLayout3", new { pageNumber = pageNumber - 1 })">Previous</a>
+						</li>
+					}
+					@for (int i = 1; i <= totalPages; i++)
+					{
+						<li class="page-item @(i == pageNumber ? "active" : "")">
+							<a class="page-link" href="@Url.Action("TraditionalLayout3", new { pageNumber = i })">@i</a>
+						</li>
+					}
+					@if (pageNumber < totalPages)
+					{
+						<li class="page-item">
+							<a class="page-link" href="@Url.Action("TraditionalLayout3", new { pageNumber = pageNumber + 1 })">Next</a>
+						</li>
+					}
+				</ul>
+			</nav>
+		}
+	</div>
+</body>
+</html>
+
+
+
+

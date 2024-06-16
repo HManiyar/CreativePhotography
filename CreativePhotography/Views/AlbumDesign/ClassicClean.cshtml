@@ -1,0 +1,44 @@
+﻿@using CreativePhotography.Content
+@{
+    ViewData["Title"] = "Classic Clean";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+
+<div class="row mb-3">
+    <div class="col-12 text-center">
+        <h2 class="heading">@PageHeaders.ClassicClean</h2>
+    </div>
+</div>
+<section class="site-section">
+<div class="container">
+    @{
+        // Define an array of image names for ClassicClean
+        string[] imageNames = new string[] { "Classic_Album_1.jpg", "Classic_Album_2.jpg", "Classic_Album_3.jpg" };
+        // Define an array of links for each header
+         string[] headerLinks = new string[] {
+        Url.Action("ClassicCleanLayout1", "AlbumDesign")?? "",
+        Url.Action("ClassicCleanLayout2", "AlbumDesign")?? "",
+        Url.Action("ClassicCleanLayout3", "AlbumDesign")?? ""
+        };
+        // Define an array of text headers, assuming you want each under its image
+        string[] textheaders = new string[] { "Classic Clean" };
+    }
+
+    <div class="row justify-content-center">
+        @for(int i = 0; i < imageNames.Length; i++)
+        {
+            <div class="col-md-4 mb-3 text-center">
+                <div>
+                    <!-- Thumbnail with clickable link -->
+                    <a href="@headerLinks[i]">
+                        <!-- Image preview -->
+                        <img src="/images/Thumbnails/Sub_Album_Thumbnail/Classic_Album_Thumbnails/@imageNames[i]" class="img-fluid img-thumbnail" alt="Image @(i + 1)">
+                        <!-- Text header -->
+                        <h5 class="mt-2" style="color: black; font-weight: bold;">@Html.Raw(textheaders[0])</h5>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</section>

@@ -1,0 +1,48 @@
+﻿@using CreativePhotography.Content
+
+@{
+    ViewData["Title"] = "AlbumDesign";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+<div class="row mb-3">
+    <div class="col-12 text-center">
+        <h2 class="heading">@PageHeaders.AlbumDesign</h2>
+    </div>
+</div>
+<section class="site-section">
+<div class="container">
+    @{
+        // Define an array of image names
+        string[] imageNames = new string[] { "Classic_Album.jpg", "Ambiance_Album.jpg", "Fusion_Album.jpg", "Traditional_Album.jpg" };
+        string[] imageTexts = new string[] {
+            "Our Classic Clean design style focuses on the simple yet classy presentation of imagery. Stylistic design elements are kept at a minimum so as to maintain focus on the images. Backgrounds are kept simple in primarily black or white. Adornments are kept to a minimum and are subtle touches, such as thin borders.",
+            "Our Ambiance design style incorporates images into the background of pictures. The background images enhance the layout and it can be used with varying degrees of opacity and fades. The use of backgrounds can be frequent or kept to a minimum, as per the clients' needs.",
+            "Our Fusion design style is our most vivid layout. It uses textures, patterns, adornments, edge fades, and border effects to set itself apart. This style gives a vintage look to some pictures. The effects can be kept subtle or powerful, as per the clients' needs.",
+            "This design style adds embellishments to enhance the overall design. It can be subtle or generous, but the overall goal is to provide additional design elements without overwhelming the images."
+        };
+        // Define an array of links for each header
+        string[] headerLinks = new string[] { Url.Action("ClassicClean", "AlbumDesign"), Url.Action("Ambaince", "AlbumDesign"),Url.Action("Fusion", "AlbumDesign"), Url.Action("Traditional", "AlbumDesign") };
+        // Define an array of text headers
+        string[] textheaders = new string[] { "Classic Clean", "Ambiance", "Fusion", "Traditional" };
+    }
+
+    @for(int i = 0; i < imageNames.Length; i++)
+    {
+        <div class="row mb-3"> 
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <a href="@headerLinks[i]">
+                <img src="/images/Thumbnails/Parent_Album_Thumbnail/@imageNames[i]" class="img-fluid img-thumbnail mb-4" alt="Image @(i + 1)">
+                <!-- Added mb-4 class to add margin bottom to the image -->
+            </a>
+        </div>
+        <div class="col-md-6">
+            <!-- Text header -->
+            <h5 style="margin-top: 20px;"><a href="@headerLinks[i]" style="color: black; font-weight: bold;">@Html.Raw(textheaders[i])</a></h5>
+            <!-- Added margin-top to create space between image and text header -->
+            <!-- Paragraph text -->
+            <p class="text-justify">@Html.Raw(imageTexts[i])</p>
+        </div>
+    </div>
+    }
+</div>
+</section>
