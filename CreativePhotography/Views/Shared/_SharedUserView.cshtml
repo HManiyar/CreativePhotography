@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="@WebsiteData.webTitle">
-    <link rel="shortcut icon" href="/creativedesigner.jpg">
+    <link rel="shortcut icon" href="/tablogo.png">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900|Oswald:400,700" rel="stylesheet">
@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="/css/aos.css">
     <link rel="stylesheet" href="/css/fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/customcss/HomePage.css">
     <title>@WebsiteData.webTitle</title>
     <style>
+   
     .custom-loader {
         border: 8px solid #ffffff;
         border-top: 8px solid #efd686;
@@ -55,6 +57,7 @@
         z-index: 99999; /* Place overlay behind loader */
         display: none; /* Initially hide the overlay */
     }
+  
 </style>
 
 </head>
@@ -63,25 +66,29 @@
   <div class="custom-loader"></div>
      <div class="site-wrap" style="display: flex; flex-direction: column; min-height: 100vh;">
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%; margin-bottom: 20px;">
-    <a class="navbar-brand" href="@Url.Action("Index","Home")">@WebsiteData.webTitle</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="width: 100%; margin-bottom: 20px;background-color:#343a40;">
+     <a class="navbar-brand" href="@Url.Action("Index","Home")">
+        <img src="/headerlogo.png" alt="Creative Photography" class="navbar-logo">
+    </a>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.Home ? "active" : "")" href="@Url.Action("Index","Home")">@PageHeaders.Home</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.About ? "active" : "")" href="@Url.Action("About","Home")">@PageHeaders.About</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "active" : "")" href="@Url.Action("AlbumDesign","Home")">@PageHeaders.AlbumDesign</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "active" : "")" href="@Url.Action("Photography","Home")">@PageHeaders.PhotoGraphy</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "active" : "")" href="@Url.Action("PhotoEditing","Home")">@PageHeaders.PhotoEditing</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "active" : "")" href="@Url.Action("CollageDesign","Home")">@PageHeaders.CollageDesign</a></li>
-            <li class="nav-item"><a class="nav-link @(ViewBag.PageTitle == PageHeaders.Videos ? "active" : "")" href="@Url.Action("Videos","Home")">@PageHeaders.Videos</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.Home ? "active-link" : "")" href="@Url.Action("Index","Home")">@PageHeaders.Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.About ? "active-link" : "")" href="@Url.Action("About","Home")">@PageHeaders.About</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "active-link" : "")" href="@Url.Action("AlbumDesign","Home")">@PageHeaders.AlbumDesign</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "active-link" : "")" href="@Url.Action("Photography","Home")">@PageHeaders.PhotoGraphy</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "active-link" : "")" href="@Url.Action("PhotoEditing","Home")">@PageHeaders.PhotoEditing</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "active-link" : "")" href="@Url.Action("CollageDesign","Home")">@PageHeaders.CollageDesign</a></li>
+            <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.Videos ? "active-link" : "")" href="@Url.Action("Videos","Home")">@PageHeaders.Videos</a></li>
         </ul>
         <!-- Add a new div for social media icons with responsive classes and spacing -->
         <div class="navbar-nav ml-auto d-flex flex-row justify-content-start align-items-center">
-            <a class="nav-link mx-1" href="https://www.instagram.com/creativephotographybychetan/"><span class="icon-instagram"></span></a>
-            <a class="nav-link mx-1" href="https://www.facebook.com/chetandalwadiphotography/"><span class="icon-facebook"></span></a>
+            <a class="nav-link mx-1 nav-text" href="https://www.instagram.com/creativephotographybychetan/"><span class="icon-instagram"></span></a>
+            <a class="nav-link mx-1 nav-text" href="https://www.facebook.com/chetandalwadiphotography/"><span class="icon-facebook"></span></a>
             <a class="nav-link btn btn-danger btn-md smoothscroll mx-1" href="#section-contact" style="color: white;">Book Now</a>
         </div>
 
