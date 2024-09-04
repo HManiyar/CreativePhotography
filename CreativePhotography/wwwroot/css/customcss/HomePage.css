@@ -1,0 +1,36 @@
+﻿.navbar-logo {
+    max-height: 100px;
+    max-width: 200px;
+}
+.nav-text {
+    color: white !important;
+}
+    .nav-text.active-link {
+        color: #2ef923 !important;
+    }
+    .nav-text:hover {
+        color: #a5d6a7; /* A slightly darker shade of green */
+    }
+
+@media (min-width: 768px) {
+    .navbar-logo {
+        max-height: 100px;
+        max-width: 200px;
+    }
+}
+
+/* Adjust for extra-large screens */
+@media (min-width: 1200px) {
+    .navbar-logo {
+        max-height: 150px;
+        max-width: 300px;
+    }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 767px) {
+    .navbar-logo {
+        max-height: 100px;
+        max-width: 180px;
+    }
+}
