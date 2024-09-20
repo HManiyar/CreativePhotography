@@ -9,9 +9,11 @@ namespace CreativePhotography.Service
     public class MailService : IMailService
     {
         private readonly IConfiguration _configuration;
-        public MailService(IConfiguration configuration)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public MailService(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             _configuration = configuration;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<string> SendMailToAdmin(ContactUsModel userInfo)
         {
@@ -28,11 +30,11 @@ namespace CreativePhotography.Service
 
                     MailMessage mailMessage = new MailMessage();
                     mailMessage.From = new MailAddress(smtpSettings["UserName"]??String.Empty);
-                    mailMessage.To.Add("hitanshu2449@gmail.com"??String.Empty);
+                    mailMessage.To.Add(smtpSettings["UserName"] ?? String.Empty);
                     mailMessage.Subject = EmailOperations.emailSubject;
 
                     // Read the HTML email template from the file
-                    string templatePath = @"C:\Projects\Photograph_Project\CreativePhotography\CreativePhotography\EmailTemplates\AdminNotificationEmailTemplate.html";
+                    string templatePath = Path.Combine(_webHostEnvironment.WebRootPath, "EmailTemplate", "AdminNotificationEmailTemplate.html");
                     string emailBody = await ReadTemplateAsync(templatePath);
 
                     // Replace placeholders in the template with actual values

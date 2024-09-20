@@ -21,6 +21,7 @@
         var email = $('#email').val();
         var subject = $('#subject').val();
         var message = $('#message').val();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
         // Validate input fields
         if (!firstName.trim() || !lastName.trim() || !contact.trim() || !email.trim() || !subject.trim() || !message.trim()) {
@@ -38,6 +39,15 @@
             // Show validation message
             alert("Contact number must be exactly 10 digits");
             return; // Exit the function if contact number is invalid
+        }
+
+        // Validate email address
+        if (!emailPattern.test(email)) {
+            // Hide the loader
+            $('.custom-loader, .overlay').hide();
+            // Show validation message
+            alert("Please enter a valid email address");
+            return; // Exit the function if email is invalid
         }
 
         // Send AJAX request to sendmail endpoint
