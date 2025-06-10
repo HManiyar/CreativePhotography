@@ -28,7 +28,7 @@
     }
     public static class WebsiteData
     {
-        public static readonly string webTitle = "Creative Photography";
+        public static readonly string webTitle = "Creative Designer";
     }
     public static class ImageOperations {
         public static readonly string successDeleteImage = "Image is deleted successfully";
