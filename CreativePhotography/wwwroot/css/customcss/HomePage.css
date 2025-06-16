@@ -1,15 +1,16 @@
 ﻿.navbar-logo {
-    max-height: 100px;
-    max-width: 200px;
+    max-height: 100%;
+    max-width: 100%;
 }
 .nav-text {
-    color: white !important;
+    color: black !important;
 }
     .nav-text.active-link {
-        color: #bbd700 !important;
+        color: deepskyblue !important;
     }
     .nav-text:hover {
-        color: #a5d6a7; /* A slightly darker shade of green */
+        /*color: #a5d6a7;*/ /* A slightly darker shade of green */
+        color: black; /* A slightly darker shade of green */
     }
 
 .site-section-hero {
@@ -32,8 +33,8 @@
 /* Adjust for extra-large screens */
 @media (min-width: 1200px) {
     .navbar-logo {
-        max-height: 150px;
-        max-width: 300px;
+        max-height: 50%;
+        max-width: 50%;
     }
 }
 
