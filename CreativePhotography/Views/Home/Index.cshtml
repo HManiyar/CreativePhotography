@@ -1,33 +1,136 @@
-﻿@using CreativePhotography.Content
+@using CreativePhotography.Content
 @{
     Layout = "~/Views/Shared/_SharedUserView.cshtml";
     string[] originalImagePaths = (ViewBag.OriginalImagePaths as string[]) ?? Array.Empty<string>();
-    string[] compressedImagePaths = (ViewBag.CompressedImagePaths as string[]) ?? Array.Empty<string>();
-
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="~/css/customcss/FlexibleImageGalleryStyles.css" rel="stylesheet" />
+    <link href="~/css/customcss/HeroSlider.css" rel="stylesheet" />
 </head>
 <body>
-	@*  <div class="site-section-hero mb-5" style="background-image: url('/images/creative-logo.jpg'); background-position: center; background-repeat: no-repeat; align-items: center;">
-	 </div> *@
-    <div class="col-12 text-center">
-        <h2 class="heading">@PageHeaders.Home</h2>
-    </div>
-	<div class="album-container">
-		<div class="album-inner">
-			@for (int i = 0; i < originalImagePaths.Length; i++)
-			{
-				<div class="album-item">
-					<a href="@Url.Content(originalImagePaths[i])" data-fancybox="gallery">
-						<img src="@Url.Content(originalImagePaths[i])" alt="Image" class="img-fluid mb-0">
-					</a>
-				</div>
-			}
-		</div>
-	</div>
+
+    @* ── Hero Slider (curated static images) ─────────────────── *@
+    <section class="hero-slider-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade"
+             data-ride="carousel" data-interval="5500">
+
+            <ol class="carousel-indicators">
+                <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#heroCarousel" data-slide-to="1"></li>
+                <li data-target="#heroCarousel" data-slide-to="2"></li>
+                <li data-target="#heroCarousel" data-slide-to="3"></li>
+                <li data-target="#heroCarousel" data-slide-to="4"></li>
+            </ol>
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background-image:url('/images/Wed.jpg')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tagline">Wedding Photography</span>
+                            <h1 class="hero-title">Love Stories<br>Beautifully Told</h1>
+                            <p class="hero-subtitle">Timeless wedding memories crafted with artistry</p>
+                            <a href="#section-contact" class="hero-cta smoothscroll">Book a Session</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image:url('/images/Pre_Wed.jpg')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tagline">Pre-Wedding Sessions</span>
+                            <h1 class="hero-title">Before The<br>Big Day</h1>
+                            <p class="hero-subtitle">Celebrate your love story before the ceremony</p>
+                            <a href="#section-contact" class="hero-cta smoothscroll">Book a Session</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image:url('/images/Engagement.jpg')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tagline">Engagement Photography</span>
+                            <h1 class="hero-title">The Beginning<br>Of Forever</h1>
+                            <p class="hero-subtitle">Capturing the joy of saying yes</p>
+                            <a href="#section-contact" class="hero-cta smoothscroll">Book a Session</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image:url('/images/Decoration.jpg')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tagline">Event Decoration</span>
+                            <h1 class="hero-title">Transform<br>Your Vision</h1>
+                            <p class="hero-subtitle">Breathtaking setups for every occasion</p>
+                            <a href="#section-contact" class="hero-cta smoothscroll">Book a Session</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image:url('/images/Bday.jpg')">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <span class="hero-tagline">Birthday Celebrations</span>
+                            <h1 class="hero-title">Every Milestone<br>Deserves To Shine</h1>
+                            <p class="hero-subtitle">Creating memories that last a lifetime</p>
+                            <a href="#section-contact" class="hero-cta smoothscroll">Book a Session</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                <span class="hero-arrow" aria-hidden="true">&#8592;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                <span class="hero-arrow" aria-hidden="true">&#8594;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    @* ── Portfolio Gallery ────────────────────────────────────── *@
+    @if (originalImagePaths.Length > 0)
+    {
+        <section class="portfolio-section">
+            <div class="portfolio-header">
+                <span class="cd-eyebrow">Our Portfolio</span>
+                <h2 class="portfolio-title">@PageHeaders.Home</h2>
+                <div class="portfolio-divider"></div>
+            </div>
+
+            <div class="masonry-gallery">
+                @for (int i = 0; i < originalImagePaths.Length; i++)
+                {
+                    <div class="masonry-item">
+                        <a href="@Url.Content(originalImagePaths[i])" data-fancybox="gallery">
+                            <img src="@Url.Content(originalImagePaths[i])"
+                                 alt="Creative Designers Portfolio"
+                                 loading="@(i < 6 ? "eager" : "lazy")">
+                            <div class="masonry-overlay">
+                                <span class="masonry-zoom-icon">&#43;</span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+
 </body>
 </html>

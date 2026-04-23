@@ -1,4 +1,4 @@
-﻿@using CreativePhotography.Content
+@using CreativePhotography.Content
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="@WebsiteData.webTitle">
     <link rel="shortcut icon" href="/tablogo.png">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="Creative Designer – Premium Photography &amp; Album Design Services" />
+    <meta name="keywords" content="wedding photography, album design, photo editing, collage design, pre-wedding, engagement" />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900|Oswald:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -21,150 +21,192 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/customcss/HomePage.css">
     <title>@WebsiteData.webTitle</title>
-    <style>
-
-        .custom-loader {
-            border: 8px solid #ffffff;
-            border-top: 8px solid #efd686;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999999; /* Highest possible value for z-index */
-            background-color: rgba(255, 255, 255, 0.48); /* Semi-transparent white background */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
-            display: none; /* Initially hide the loader */
-        }
-
-        /* Animation for the loader */
-        @@keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Background overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-            z-index: 99999; /* Place overlay behind loader */
-            display: none; /* Initially hide the overlay */
-        }
-    </style>
-
 </head>
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
+<body>
+
+    <!-- Loading overlay — class names kept for Home.js compatibility -->
     <div class="overlay"></div>
     <div class="custom-loader"></div>
-    <div class="site-wrap" style="display: flex; flex-direction: column; min-height: 100vh;">
 
-        @* <nav class="navbar navbar-expand-lg navbar-light" style="width: 100%; margin-bottom: 20px;background-color:#343a40;"> *@
-        <nav class="navbar navbar-expand-lg navbar-light" style="width: 100%; margin-bottom: 20px;background-color:#ffffff;">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <img src="/headerlogo.png" alt="Creative Designer" class="navbar-logo">
-            </a>
+    <div class="cd-wrap">
 
+        <!-- ── Sticky Navbar ──────────────────────────── -->
+        <nav class="cd-navbar navbar navbar-expand-lg" id="cdNavbar">
+            <div class="cd-navbar__inner">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.Home ? "active-link" : "")" href="@Url.Action("Index", "Home")">@PageHeaders.Home</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.About ? "active-link" : "")" href="@Url.Action("About", "Home")">@PageHeaders.About</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "active-link" : "")" href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "active-link" : "")" href="@Url.Action("Photography", "Home")">@PageHeaders.PhotoGraphy</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "active-link" : "")" href="@Url.Action("PhotoEditing", "Home")">@PageHeaders.PhotoEditing</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "active-link" : "")" href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a></li>
-                    <li class="nav-item"><a class="nav-link nav-text @(ViewBag.PageTitle == PageHeaders.Videos ? "active-link" : "")" href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a></li>
-                </ul>
-                <!-- Add a new div for social media icons with responsive classes and spacing -->
-                <div class="navbar-nav ml-auto d-flex flex-row justify-content-start align-items-center">
-                    <a class="nav-link mx-1 nav-text" href="https://www.instagram.com/creativephotographybychetan/"><span class="icon-instagram"></span></a>
-                    <a class="nav-link mx-1 nav-text" href="https://www.facebook.com/chetandalwadiphotography/"><span class="icon-facebook"></span></a>
-                    <a class="nav-link btn btn-danger btn-md smoothscroll mx-1" href="#section-contact" style="color: white;">Book Now</a>
+                <a class="cd-navbar__brand" href="@Url.Action("Index", "Home")">
+                    <img src="/headerlogo.png" alt="@WebsiteData.webTitle" class="cd-navbar__logo">
+                </a>
+
+                <button class="cd-navbar__toggle navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#cdNavMenu"
+                        aria-controls="cdNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="cdNavMenu">
+                    <ul class="cd-navbar__links navbar-nav">
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.Home ? "is-active" : "")"
+                               href="@Url.Action("Index", "Home")">@PageHeaders.Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.About ? "is-active" : "")"
+                               href="@Url.Action("About", "Home")">@PageHeaders.About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "is-active" : "")"
+                               href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "is-active" : "")"
+                               href="@Url.Action("Photography", "Home")">@PageHeaders.PhotoGraphy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "is-active" : "")"
+                               href="@Url.Action("PhotoEditing", "Home")">@PageHeaders.PhotoEditing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "is-active" : "")"
+                               href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.Videos ? "is-active" : "")"
+                               href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a>
+                        </li>
+                    </ul>
+                    <div class="cd-navbar__actions">
+                        <a class="cd-navbar__social" href="https://www.instagram.com/creativephotographybychetan/"
+                           target="_blank" rel="noopener" aria-label="Instagram">
+                            <span class="icon-instagram"></span>
+                        </a>
+                        <a class="cd-navbar__social" href="https://www.facebook.com/chetandalwadiphotography/"
+                           target="_blank" rel="noopener" aria-label="Facebook">
+                            <span class="icon-facebook"></span>
+                        </a>
+                        <a class="cd-btn cd-btn--gold smoothscroll" href="#section-contact">Book Now</a>
+                    </div>
                 </div>
 
             </div>
         </nav>
-        <main class="main-content" style="flex-grow: 1; display: flex; justify-content: center; align-items: center; width: 100%;">
-            <div class="container-fluid site-section">
-                @RenderBody()
-                <div class="row justify-content-center">
-                    <div class="col-md-12 text-center py-5">
-                        <p>
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; @WebsiteData.webTitle
-                        </p>
+
+        <!-- ── Page Content ───────────────────────────── -->
+        <main class="cd-main">
+            @RenderBody()
+        </main>
+
+        <!-- ── Contact Section ────────────────────────── -->
+        <section class="cd-contact" id="section-contact">
+            <div class="cd-contact__inner">
+
+                <div class="cd-contact__info" data-aos="fade-right" data-aos-duration="700">
+                    <span class="cd-eyebrow">Get In Touch</span>
+                    <h2 class="cd-contact__heading">Let's Create Something Beautiful</h2>
+                    <p class="cd-contact__desc">
+                        Planning a wedding, corporate event, or looking for stunning album designs?
+                        We'd love to hear from you and bring your vision to life.
+                    </p>
+                    <div class="cd-contact__socials">
+                        <a href="https://www.instagram.com/creativephotographybychetan/"
+                           target="_blank" rel="noopener" class="cd-social-chip">
+                            <span class="icon-instagram"></span>
+                            <span>@@creativephotographybychetan</span>
+                        </a>
+                        <a href="https://www.facebook.com/chetandalwadiphotography/"
+                           target="_blank" rel="noopener" class="cd-social-chip">
+                            <span class="icon-facebook"></span>
+                            <span>Creative Designers</span>
+                        </a>
                     </div>
+                </div>
+
+                <div class="cd-contact__form-wrap" data-aos="fade-left" data-aos-duration="700">
+                    <form action="#" autocomplete="off">
+                        <div class="cd-form-row">
+                            <div class="cd-form-group">
+                                <input type="text" id="fname" class="cd-form-input" placeholder=" ">
+                                <label class="cd-form-label" for="fname">First Name</label>
+                            </div>
+                            <div class="cd-form-group">
+                                <input type="text" id="lname" class="cd-form-input" placeholder=" ">
+                                <label class="cd-form-label" for="lname">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="cd-form-row">
+                            <div class="cd-form-group">
+                                <input type="number" id="contact" class="cd-form-input" placeholder=" ">
+                                <label class="cd-form-label" for="contact">Contact Number</label>
+                            </div>
+                            <div class="cd-form-group">
+                                <input type="email" id="email" class="cd-form-input" placeholder=" ">
+                                <label class="cd-form-label" for="email">Email Address</label>
+                            </div>
+                        </div>
+                        <div class="cd-form-row">
+                            <div class="cd-form-group cd-form-group--full">
+                                <input type="text" id="subject" class="cd-form-input" placeholder=" ">
+                                <label class="cd-form-label" for="subject">Subject</label>
+                            </div>
+                        </div>
+                        <div class="cd-form-row">
+                            <div class="cd-form-group cd-form-group--full">
+                                <textarea id="message" class="cd-form-input cd-form-textarea"
+                                          placeholder=" " rows="5"></textarea>
+                                <label class="cd-form-label cd-form-label--textarea" for="message">Your Message</label>
+                            </div>
+                        </div>
+                        <input type="submit" value="Send Message" class="cd-btn cd-btn--gold-solid">
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── Footer ─────────────────────────────────── -->
+        <footer class="cd-footer">
+            <div class="cd-footer__inner">
+                <div class="cd-footer__col cd-footer__col--brand">
+                    <img src="/headerlogo.png" alt="@WebsiteData.webTitle" class="cd-footer__logo">
+                    <p class="cd-footer__tagline">Capturing Moments, Creating Memories</p>
+                </div>
+                <div class="cd-footer__col">
+                    <h6 class="cd-footer__col-title">Quick Links</h6>
+                    <ul class="cd-footer__list">
+                        <li><a href="@Url.Action("Index", "Home")">@PageHeaders.Home</a></li>
+                        <li><a href="@Url.Action("About", "Home")">@PageHeaders.About</a></li>
+                        <li><a href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a></li>
+                        <li><a href="@Url.Action("Photography", "Home")">@PageHeaders.PhotoGraphy</a></li>
+                        <li><a href="@Url.Action("PhotoEditing", "Home")">@PageHeaders.PhotoEditing</a></li>
+                        <li><a href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a></li>
+                        <li><a href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a></li>
+                    </ul>
+                </div>
+                <div class="cd-footer__col">
+                    <h6 class="cd-footer__col-title">Follow Us</h6>
+                    <div class="cd-footer__social-icons">
+                        <a href="https://www.instagram.com/creativephotographybychetan/"
+                           target="_blank" rel="noopener" aria-label="Instagram">
+                            <span class="icon-instagram"></span>
+                        </a>
+                        <a href="https://www.facebook.com/chetandalwadiphotography/"
+                           target="_blank" rel="noopener" aria-label="Facebook">
+                            <span class="icon-facebook"></span>
+                        </a>
+                    </div>
+                    <a class="cd-btn cd-btn--outline-gold smoothscroll" href="#section-contact">Book a Session</a>
                 </div>
             </div>
-        </main>
-        <div class="site-section">
-            <section class="site-section" id="section-contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 mx-auto">
-                            <h2 class="mb-5 heading text-center">Contact</h2>
-                            <form action="#">
-                                <div class="row form-group">
-                                    <div class="col-md-6 mb-3 mb-md-0">
-                                        <label class="" for="fname">First Name</label>
-                                        <input type="text" id="fname" class="form-control">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="" for="lname">Last Name</label>
-                                        <input type="text" id="lname" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="" for="contact">Contact Number</label>
-                                        <input type="number" id="contact" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="" for="email">Email</label>
-                                        <input type="email" id="email" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="" for="subject">Subject</label>
-                                        <input type="text" id="subject" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group mb-5">
-                                    <div class="col-md-12">
-                                        <label class="" for="message">Message</label>
-                                        <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <input type="submit" value="Send Message" class="btn btn-primary btn-md">
-                                    </div>
-                                </div>
-                            </form>
+            <div class="cd-footer__bottom">
+                <p>
+                    &copy; <script>document.write(new Date().getFullYear())</script>
+                    @WebsiteData.webTitle &mdash; All Rights Reserved
+                </p>
+            </div>
+        </footer>
 
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
+    </div><!-- /.cd-wrap -->
+
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="/js/jquery.easing.1.3.js"></script>
@@ -182,10 +224,17 @@
     <script src="/js/CustomJS/Home.js"></script>
     <script>
         $(document).ready(function () {
-            $('.js-menu-toggle').click(function () {
-                $('.main-menu').toggleClass('show');
-            });
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 750, once: true, offset: 60 });
+            }
+            var navbar = document.getElementById('cdNavbar');
+            if (navbar) {
+                window.addEventListener('scroll', function () {
+                    navbar.classList.toggle('is-scrolled', window.scrollY > 60);
+                }, { passive: true });
+            }
         });
     </script>
+
 </body>
 </html>
