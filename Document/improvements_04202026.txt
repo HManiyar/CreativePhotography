@@ -1,0 +1,7 @@
+load all the images the moment user zooms in on particular images -- Done
+delete certain images -> Done
+add two tabs: corporate events, product photography -- Pending
+New order:
+Home , About, Photography, Videos -> Cinematorgraphy, Album Design, Photo Editing, Collage Design -- Done
+Take instagram link from  https://www.instagram.com/pixel_creator7?igsh=MWJrcmM3dDNzcDd6eQ== -- Done
+add a new logo on pixel_site: logo is on Pixel Creator Final Logo for web , folder path: C:\Users\admin\Downloads

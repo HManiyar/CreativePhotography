@@ -6,6 +6,8 @@
 	string[] compressedImagePaths = (ViewBag.CompressedImagePaths as string[]) ?? Array.Empty<string>();
 	int pageNumber = ViewBag.PageNumber;
 	int totalPages = ViewBag.TotalPages;
+	string[] allImagePaths = (ViewBag.AllImagePaths as string[]) ?? Array.Empty<string>();
+	int pageStartIndex = (int)(ViewBag.PageStartIndex ?? 0);
 }
 <!DOCTYPE html>
 <html>
@@ -56,6 +58,10 @@
 			</nav>
 		}
 	</div>
+	<script>
+		window.mvAllImages = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(allImagePaths));
+		window.mvPageStartIndex = @pageStartIndex;
+	</script>
 </body>
 </html>
 

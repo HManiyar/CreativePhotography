@@ -1,0 +1,415 @@
+/* =============================================================
+   About Page Styles
+   Loaded only in Views/Home/About.cshtml
+   ============================================================= */
+
+/* ── Page Hero Banner ────────────────────────────────────── */
+.about-hero {
+    position: relative;
+    background: #0e0e0e;
+    min-height: 32vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4rem 2rem;
+}
+
+/* Dot-grid decorative pattern */
+.about-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+        circle,
+        rgba(239, 214, 134, 0.1) 1px,
+        transparent 1px
+    );
+    background-size: 28px 28px;
+    pointer-events: none;
+}
+
+/* Radial vignette over the dot grid */
+.about-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 70% 80% at 50% 50%,
+        transparent 30%,
+        #0e0e0e 100%
+    );
+    pointer-events: none;
+}
+
+.about-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.about-hero__eyebrow {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: #efd686;
+    margin-bottom: 0.9rem;
+}
+
+.about-hero__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+    margin: 0 0 1.2rem;
+}
+
+.about-hero__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+}
+
+/* ── Story Section ───────────────────────────────────────── */
+.about-story {
+    padding: 6rem 2rem 5rem;
+    background: #fff;
+}
+
+.about-story__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1140px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-story__label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #efd686;
+    margin-bottom: 1rem;
+}
+
+.about-story__heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.05em;
+    line-height: 1.12;
+    margin-bottom: 1.8rem;
+}
+
+.about-story__heading em {
+    font-style: normal;
+    color: #c9a84c;
+}
+
+.about-story__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.93rem;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+}
+
+/* Decorative quote card */
+.about-quote-card {
+    background: #111;
+    padding: 3rem 2.5rem;
+    position: relative;
+    border-left: 3px solid #efd686;
+}
+
+.about-quote-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.2rem;
+    left: 1.8rem;
+    font-family: 'Oswald', serif;
+    font-size: 6rem;
+    color: #efd686;
+    line-height: 1;
+    opacity: 0.25;
+    pointer-events: none;
+    user-select: none;
+}
+
+.about-quote-card blockquote {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.85;
+}
+
+.about-quote-card cite {
+    display: block;
+    margin-top: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #efd686;
+    font-style: normal;
+}
+
+/* ── Values / Why Us ─────────────────────────────────────── */
+.about-values {
+    padding: 5.5rem 2rem 5rem;
+    background: #fafafa;
+}
+
+.about-values__header {
+    text-align: center;
+    margin-bottom: 3.8rem;
+}
+
+.about-values__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.1rem;
+}
+
+.about-values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: #fff;
+    padding: 2.5rem 1.8rem 2.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}
+
+.value-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #111 0%, #2a2a2a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.4rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+    background: linear-gradient(135deg, #efd686 0%, #c9a84c 100%);
+    transform: scale(1.08);
+}
+
+.value-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+    transition: stroke 0.3s ease;
+}
+
+.value-card:hover .value-icon svg {
+    stroke: #111;
+}
+
+.value-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #111;
+    margin-bottom: 0.65rem;
+}
+
+.value-card__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.78;
+    margin: 0;
+}
+
+/* ── Services Expertise ──────────────────────────────────── */
+.about-services {
+    padding: 5.5rem 2rem 5rem;
+    background: #fff;
+}
+
+.about-services__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.about-services__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.1rem;
+}
+
+.about-services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fafafa;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.28s ease;
+}
+
+.about-service-item:hover {
+    border-color: #efd686;
+    background: rgba(239, 214, 134, 0.05);
+    transform: translateX(4px);
+}
+
+.about-service-item__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #efd686;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.about-service-item:hover .about-service-item__dot {
+    transform: scale(1.6);
+}
+
+.about-service-item__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* ── CTA Banner ──────────────────────────────────────────── */
+.about-cta {
+    background: #111;
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 60% 80% at 50% 50%,
+        rgba(239, 214, 134, 0.07) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.about-cta__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.about-cta__eyebrow {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #efd686;
+    margin-bottom: 1rem;
+}
+
+.about-cta__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+}
+
+.about-cta__sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2.5rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .about-story__inner  { grid-template-columns: 1fr; gap: 3rem; }
+    .about-values__grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .about-story  { padding: 4rem 1.5rem 3.5rem; }
+    .about-values { padding: 4rem 1.5rem 3.5rem; }
+    .about-services { padding: 4rem 1.5rem 3.5rem; }
+    .about-cta    { padding: 3.5rem 1.5rem; }
+    .about-services__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 576px) {
+    .about-hero   { min-height: 26vh; padding: 3rem 1.25rem; }
+    .about-values__grid { grid-template-columns: 1fr; }
+    .about-services__grid { grid-template-columns: 1fr; }
+    .about-quote-card { padding: 2rem 1.5rem; }
+}

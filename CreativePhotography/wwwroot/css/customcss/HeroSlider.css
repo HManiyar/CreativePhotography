@@ -1,0 +1,543 @@
+/* =============================================================
+   HOME PAGE — Hero Slider & Masonry Gallery
+   Only loaded in Views/Home/Index.cshtml
+   ============================================================= */
+
+/* ── Hero Slider ─────────────────────────────────────────── */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+#heroCarousel,
+#heroCarousel .carousel-inner,
+#heroCarousel .carousel-item {
+    height: 100%;
+}
+
+.hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Full-bleed image — sharper than background-image on all screen sizes */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    will-change: transform;
+    display: block;
+}
+
+/* Ken Burns — scale 1.06→1.0 (was 1.1) keeps image sharper */
+@keyframes kenBurns {
+    0%   { transform: scale(1.06); }
+    100% { transform: scale(1.0);  }
+}
+
+.carousel-item.active .hero-bg {
+    animation: kenBurns 9s ease-out both;
+}
+
+/* Cinematic gradient overlay */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        165deg,
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(0, 0, 0, 0.62) 100%
+    );
+}
+
+/* Centered text block */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 5;
+    width: 90%;
+    max-width: 840px;
+}
+
+.hero-tagline {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: #efd686;
+    margin-bottom: 1.1rem;
+}
+
+.hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.2rem, 6.5vw, 5.8rem);
+    font-weight: 700;
+    line-height: 1.03;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #fff;
+    margin: 0 0 1.25rem;
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 2.5rem;
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    border: 2px solid #efd686;
+    color: #efd686;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero-cta:hover {
+    background: #efd686;
+    color: #111;
+    text-decoration: none;
+}
+
+/* Staggered entry animations (fire when slide becomes .active) */
+.carousel-item.active .hero-tagline  { animation: heroFadeUp 0.8s ease 0.3s both; }
+.carousel-item.active .hero-title    { animation: heroFadeUp 0.9s ease 0.5s both; }
+.carousel-item.active .hero-subtitle { animation: heroFadeUp 0.8s ease 0.7s both; }
+.carousel-item.active .hero-cta      { animation: heroFadeUp 0.8s ease 0.9s both; }
+
+@keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide indicators */
+.hero-slider-section .carousel-indicators {
+    margin-bottom: 1.75rem;
+    z-index: 10;
+}
+
+.hero-slider-section .carousel-indicators li {
+    width: 30px;
+    height: 2px;
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+    background-color: rgba(255, 255, 255, 0.38);
+    transition: width 0.35s ease, background-color 0.35s ease;
+}
+
+.hero-slider-section .carousel-indicators .active {
+    background-color: #efd686;
+    width: 54px;
+}
+
+/* Arrow controls */
+.hero-slider-section .carousel-control-prev,
+.hero-slider-section .carousel-control-next {
+    width: 64px;
+    opacity: 1;
+}
+
+.hero-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
+    margin: auto;
+}
+
+.hero-arrow:hover {
+    border-color: #efd686;
+    color: #efd686;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Scroll-down pulse */
+.scroll-indicator {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.58);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.62), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 1;   transform: scaleY(1)    translateY(0);    }
+    50%       { opacity: 0.3; transform: scaleY(0.55) translateY(6px);  }
+}
+
+/* ── Portfolio Section ───────────────────────────────────── */
+.portfolio-section {
+    padding: 5.5rem 2.5rem 4rem;
+    background: #fff;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.portfolio-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.2rem;
+}
+
+.portfolio-divider {
+    width: 48px;
+    height: 3px;
+    background: #efd686;
+    margin: 0 auto;
+}
+
+/* CSS columns masonry */
+.masonry-gallery {
+    columns: 3;
+    column-gap: 8px;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.masonry-item a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.masonry-item:hover img {
+    transform: scale(1.06);
+}
+
+.masonry-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease;
+}
+
+.masonry-item:hover .masonry-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.58) 0%,
+        rgba(0, 0, 0, 0.28) 55%,
+        transparent 100%
+    );
+}
+
+.masonry-zoom-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    opacity: 0;
+    transform: scale(0.55);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.masonry-item:hover .masonry-zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ── Services Section ────────────────────────────────────── */
+.services-section {
+    padding: 6rem 2rem 5.5rem;
+    background: #fafafa;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: #fff;
+    padding: 2.6rem 2rem 2.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    text-align: center;
+    cursor: default;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.38s ease;
+    will-change: transform;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.09);
+}
+
+.service-icon-wrap {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: background 0.32s ease, transform 0.32s ease;
+}
+
+.service-card:hover .service-icon-wrap {
+    background: #efd686;
+    transform: scale(1.1);
+}
+
+.service-icon-wrap svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.32s ease;
+    display: block;
+}
+
+.service-card:hover .service-icon-wrap svg {
+    stroke: #111;
+}
+
+.service-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #111;
+    margin-bottom: 0.7rem;
+}
+
+.service-card__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.78;
+    margin-bottom: 1.3rem;
+}
+
+.service-card__link {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1.5px solid #efd686;
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card__link:hover {
+    color: #c9a84c;
+    border-color: #c9a84c;
+    text-decoration: none;
+}
+
+/* ── Stats / Numbers Strip ───────────────────────────────── */
+.stats-section {
+    background: #111;
+    padding: 5.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 80% 60% at 50% 50%,
+        rgba(239, 214, 134, 0.07) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item + .stat-item {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 0.55rem;
+}
+
+.stat-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 700;
+    color: #efd686;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.stat-suffix {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: rgba(239, 214, 134, 0.65);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .masonry-gallery    { columns: 2; }
+    .services-grid      { grid-template-columns: repeat(2, 1fr); }
+    .stats-inner        { grid-template-columns: repeat(2, 1fr); }
+    .stat-item + .stat-item { border-left: none; }
+    .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.08); }
+}
+
+@media (max-width: 768px) {
+    .hero-slider-section {
+        height: 75vh;
+        min-height: 420px;
+    }
+    .hero-subtitle { display: none; }
+    .portfolio-section { padding: 3.5rem 1.25rem 2.5rem; }
+    .services-section  { padding: 4.5rem 1.25rem 3.5rem; }
+    .stats-section     { padding: 4rem 1.5rem; }
+    .services-grid     { gap: 1.25rem; }
+}
+
+@media (max-width: 576px) {
+    .services-grid   { grid-template-columns: 1fr; gap: 1rem; }
+    .stats-inner     { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 0.5rem; }
+    .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.08); }
+}
+
+@media (max-width: 480px) {
+    .hero-slider-section {
+        height: 65vh;
+        min-height: 340px;
+    }
+    .hero-title { font-size: 2rem; }
+    .hero-cta   { padding: 0.75rem 1.8rem; font-size: 0.66rem; }
+    .masonry-gallery { columns: 1; }
+}

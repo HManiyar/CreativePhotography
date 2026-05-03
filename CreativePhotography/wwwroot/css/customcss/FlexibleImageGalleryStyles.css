@@ -1,48 +1,300 @@
-﻿.album-container {
-    overflow-x: auto;
-    white-space: nowrap;
+/* =============================================================
+   Modern Gallery Grid
+   Used by Photography, AlbumDesign, PhotoEditing, CollageDesign views
+   ============================================================= */
+
+/* ── Page heading ────────────────────────────────────────────── */
+.col-12.text-center {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
 }
 
+.col-12.text-center .heading,
+h2.heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.09em;
+    margin: 0 0 0.9rem;
+    line-height: 1.1;
+}
+
+.col-12.text-center::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: #efd686;
+    margin: 0 auto;
+}
+
+/* ── Gallery wrapper ─────────────────────────────────────────── */
+.album-container {
+    padding: 0 0 3.5rem;
+}
+
+/* ── CSS Grid ────────────────────────────────────────────────── */
 .album-inner {
-    display: flex;
-    flex-wrap: wrap; /* Allow images to wrap to the next line */
-    justify-content: center; /* Center images horizontally */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
+    padding: 0 1rem;
+    margin: 0 auto;
+    max-width: 1400px;
 }
 
+/* ── Grid cell ───────────────────────────────────────────────── */
 .album-item {
-    margin: 0 10px 20px; /* Adjust margins as needed */
-    flex: 1 0 auto; /* Allow images to grow and shrink as needed */
-    max-width: calc(33.33% - 20px); /* Adjust as needed for the number of images per row */
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    background: #e8e8e8;
 }
 
-    .album-item img {
-        max-width: 100%;
-        height: auto;
+/* The anchor wraps the image */
+.album-item a {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    text-decoration: none;
+}
+
+/* Image at natural proportions */
+.album-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scale image on hover */
+.album-item:hover img {
+    transform: scale(1.08);
+}
+
+/* ── Hover dark overlay (::after) ───────────────────────────── */
+.album-item a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 10, 0);
+    transition: background 0.38s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.album-item:hover a::after {
+    background: rgba(8, 8, 10, 0.44);
+}
+
+/* ── Zoom icon (::before) — circle with magnifier ───────────── */
+.album-item a::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.55);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.7rem;
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    line-height: 50px;
+    text-align: center;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.album-item:hover a::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ── Pagination ──────────────────────────────────────────────── */
+.pagination-container {
+    padding: 2rem 0 1rem;
+}
+
+.pagination-container .pagination {
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-container .page-link {
+    border: 1px solid #ddd;
+    color: #444;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.48rem 0.88rem;
+    border-radius: 3px;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    min-width: 38px;
+    text-align: center;
+}
+
+.pagination-container .page-item.active .page-link {
+    background-color: #111;
+    border-color: #111;
+    color: #efd686;
+}
+
+.pagination-container .page-link:hover:not(.active) {
+    background-color: #f4f4f4;
+    border-color: #bbb;
+    color: #111;
+}
+
+/* =============================================================
+   Category Cards  (AlbumDesign, Photography landing pages)
+   ============================================================= */
+
+.cd-cat-grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 5rem;
+}
+
+/* AlbumDesign: 2 columns */
+.cd-cat-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Photography: 3 columns */
+.cd-cat-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.cd-cat-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.cd-cat-card:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    border-color: #efd686;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cd-cat-card__thumb {
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.cd-cat-card__thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cd-cat-card:hover .cd-cat-card__thumb img {
+    transform: scale(1.06);
+}
+
+.cd-cat-card__body {
+    padding: 1.5rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cd-cat-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #111;
+    margin: 0 0 0.7rem;
+    line-height: 1.2;
+}
+
+.cd-cat-card__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.8;
+    margin: 0 0 1.4rem;
+    flex: 1;
+}
+
+.cd-cat-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #111;
+    transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.cd-cat-card:hover .cd-cat-card__cta {
+    color: #c9a84c;
+    gap: 0.7rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .album-inner {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 8px;
     }
 
-@media screen and (max-width: 768px) {
-    /* Adjust layout for smaller screens */
-    .album-item {
-        max-width: calc(50% - 20px); /* Two images per row */
+    .album-container {
+        padding-bottom: 2.5rem;
+    }
+
+    .col-12.text-center {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
     }
 }
 
-@media screen and (max-width: 576px) {
-    /* Further adjust layout for extra small screens */
-    .album-item {
-        max-width: calc(100% - 20px); /* Single image per row */
+@media (max-width: 480px) {
+    .album-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        padding: 0 0.5rem;
     }
-}
-@media screen and (max-width: 768px) {
-    /* Adjust layout for smaller screens */
-    .album-item {
-        max-width: calc(50% - 20px); /* Two images per row */
+
+    .album-item a::before {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+        line-height: 38px;
     }
 }
 
-@media screen and (max-width: 576px) {
-    /* Further adjust layout for extra small screens */
-    .album-item {
-        max-width: calc(100% - 20px); /* Single image per row */
+@media (max-width: 992px) {
+    .cd-cat-grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .cd-cat-grid--2,
+    .cd-cat-grid--3 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem 1rem 4rem;
     }
 }
