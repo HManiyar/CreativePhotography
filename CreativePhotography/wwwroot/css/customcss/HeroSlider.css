@@ -22,19 +22,29 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
-/* Ken Burns zoom on the active slide */
+/* Full-bleed image — sharper than background-image on all screen sizes */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    will-change: transform;
+    display: block;
+}
+
+/* Ken Burns — scale 1.06→1.0 (was 1.1) keeps image sharper */
 @keyframes kenBurns {
-    0%   { transform: scale(1.1); }
-    100% { transform: scale(1.0); }
+    0%   { transform: scale(1.06); }
+    100% { transform: scale(1.0);  }
 }
 
-.carousel-item.active .hero-slide {
-    animation: kenBurns 8s ease-out both;
+.carousel-item.active .hero-bg {
+    animation: kenBurns 9s ease-out both;
 }
 
 /* Cinematic gradient overlay */
@@ -275,7 +285,12 @@
 }
 
 .masonry-item:hover .masonry-overlay {
-    background: rgba(0, 0, 0, 0.38);
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.58) 0%,
+        rgba(0, 0, 0, 0.28) 55%,
+        transparent 100%
+    );
 }
 
 .masonry-zoom-icon {
@@ -300,9 +315,203 @@
     transform: scale(1);
 }
 
+/* ── Services Section ────────────────────────────────────── */
+.services-section {
+    padding: 6rem 2rem 5.5rem;
+    background: #fafafa;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: #fff;
+    padding: 2.6rem 2rem 2.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    text-align: center;
+    cursor: default;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.38s ease;
+    will-change: transform;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.09);
+}
+
+.service-icon-wrap {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: background 0.32s ease, transform 0.32s ease;
+}
+
+.service-card:hover .service-icon-wrap {
+    background: #efd686;
+    transform: scale(1.1);
+}
+
+.service-icon-wrap svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.32s ease;
+    display: block;
+}
+
+.service-card:hover .service-icon-wrap svg {
+    stroke: #111;
+}
+
+.service-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #111;
+    margin-bottom: 0.7rem;
+}
+
+.service-card__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.78;
+    margin-bottom: 1.3rem;
+}
+
+.service-card__link {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1.5px solid #efd686;
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card__link:hover {
+    color: #c9a84c;
+    border-color: #c9a84c;
+    text-decoration: none;
+}
+
+/* ── Stats / Numbers Strip ───────────────────────────────── */
+.stats-section {
+    background: #111;
+    padding: 5.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 80% 60% at 50% 50%,
+        rgba(239, 214, 134, 0.07) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item + .stat-item {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 0.55rem;
+}
+
+.stat-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 700;
+    color: #efd686;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.stat-suffix {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: rgba(239, 214, 134, 0.65);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
-    .masonry-gallery { columns: 2; }
+    .masonry-gallery    { columns: 2; }
+    .services-grid      { grid-template-columns: repeat(2, 1fr); }
+    .stats-inner        { grid-template-columns: repeat(2, 1fr); }
+    .stat-item + .stat-item { border-left: none; }
+    .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.08); }
 }
 
 @media (max-width: 768px) {
@@ -312,6 +521,15 @@
     }
     .hero-subtitle { display: none; }
     .portfolio-section { padding: 3.5rem 1.25rem 2.5rem; }
+    .services-section  { padding: 4.5rem 1.25rem 3.5rem; }
+    .stats-section     { padding: 4rem 1.5rem; }
+    .services-grid     { gap: 1.25rem; }
+}
+
+@media (max-width: 576px) {
+    .services-grid   { grid-template-columns: 1fr; gap: 1rem; }
+    .stats-inner     { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 0.5rem; }
+    .stat-item:nth-child(2n) { border-left: 1px solid rgba(255,255,255,0.08); }
 }
 
 @media (max-width: 480px) {

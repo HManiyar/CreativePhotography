@@ -1,215 +1,378 @@
-﻿@using CreativePhotography.Content
+@using CreativePhotography.Content
 
 @{
-    ViewData["Title"] = "AlbumDesign";
+    ViewData["Title"] = "Videos";
     Layout = "~/Views/Shared/_SharedUserView.cshtml";
 }
 
-  <script src="/js/jquery-3.3.1.min.js"></script> 
-  <script src="/js/CustomJS/Videos.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/CustomJS/Videos.js"></script>
 
 <style>
-    .video-thumbnail-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 70vh; /* Adjust the height as needed */
+    /* ── Video grid ───────────────────────────────────────────── */
+    .cd-video-section {
+        padding: 0 0 5rem;
     }
 
-    .video-thumbnail {
-        width: 70%; /* Adjust the width of the thumbnail */
+    .cd-video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .cd-vid-card {
         position: relative;
+        border: none;
+        background: #111;
+        overflow: hidden;
+        cursor: pointer;
     }
 
-    .play-icon {
+    /* ── Thumbnail ────────────────────────────────────────────── */
+    .cd-vid-card__thumb {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cd-vid-card__thumb img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    opacity 0.4s ease;
+    }
+
+    .cd-vid-card:hover .cd-vid-card__thumb img {
+        transform: scale(1.06);
+        opacity: 0.7;
+    }
+
+    /* ── Dark gradient overlay ────────────────────────────────── */
+    .cd-vid-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(0, 0, 0, 0.72) 100%
+        );
+        pointer-events: none;
+        transition: background 0.35s ease;
+    }
+
+    .cd-vid-card:hover .cd-vid-card__overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.82) 100%
+        );
+    }
+
+    /* ── Play button ──────────────────────────────────────────── */
+    .cd-vid-card__play {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -60%) scale(0.9);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.75;
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    opacity 0.3s ease,
+                    background 0.3s ease,
+                    border-color 0.3s ease;
+        pointer-events: none;
     }
 
-    .play-icon-img {
-        width: 64px;
-        height: 64px;
-    }
-     .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-image: none; /* Removing default arrows */
+    .cd-vid-card__play svg {
+        width: 22px;
+        height: 22px;
+        fill: #fff;
+        margin-left: 3px;
     }
 
-    .carousel-control-prev-icon:after,
-    .carousel-control-next-icon:after {
-        content: ''; /* Adding custom arrow icon */
-        display: inline-block;
-        border: solid black; /* Arrow color */
-        border-width: 0 3px 3px 0;
-        padding: 3px;
+    .cd-vid-card:hover .cd-vid-card__play {
+        transform: translate(-50%, -60%) scale(1.1);
+        opacity: 1;
+        background: rgba(239, 214, 134, 0.22);
+        border-color: #efd686;
     }
 
-    .carousel-control-prev-icon:after {
-        transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
+    /* ── Title strip ──────────────────────────────────────────── */
+    .cd-vid-card__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.85rem 1.1rem;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #fff;
+        pointer-events: none;
+        transition: color 0.25s ease;
     }
 
-    .carousel-control-next-icon:after {
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
+    .cd-vid-card:hover .cd-vid-card__title {
+        color: #efd686;
+    }
+
+    /* ── Modal overrides ──────────────────────────────────────── */
+    .cd-video-modal .modal-content {
+        background: #0a0a0a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0;
+    }
+
+    .cd-video-modal .modal-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 1rem 1.25rem;
+    }
+
+    .cd-video-modal .modal-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #efd686;
+    }
+
+    .cd-video-modal .close {
+        color: rgba(255, 255, 255, 0.7);
+        text-shadow: none;
+        opacity: 1;
+        font-size: 1.4rem;
+        transition: color 0.2s;
+    }
+
+    .cd-video-modal .close:hover { color: #fff; }
+
+    .cd-video-modal .modal-body { padding: 0; }
+
+    .cd-video-modal .modal-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.75rem 1.25rem;
+    }
+
+    .cd-video-modal .btn-secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.7);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border-radius: 0;
+        padding: 0.5rem 1.4rem;
+        transition: border-color 0.2s, color 0.2s;
+    }
+
+    .cd-video-modal .btn-secondary:hover {
+        border-color: #efd686;
+        color: #efd686;
+        background: transparent;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @@media (max-width: 992px) {
+        .cd-video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @@media (max-width: 576px) {
+        .cd-video-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            padding: 0 1rem;
+        }
     }
 </style>
 
-<div class="row mb-3">
-    <div class="col-12 text-center">
-        <h2 class="heading">@PageHeaders.Videos</h2>
+<div class="col-12 text-center">
+    <h2 class="heading">@PageHeaders.Videos</h2>
+</div>
+
+<section class="cd-video-section">
+    <div class="cd-video-grid">
+
+        <!-- Shikha & Ashya -->
+        <div class="cd-vid-card" data-toggle="modal" data-target="#videoModal">
+            <div class="cd-vid-card__thumb">
+                <img src="/images/shikhaashya_youtubthumb.jpg" alt="Shikha & Ashya">
+            </div>
+            <div class="cd-vid-card__overlay"></div>
+            <div class="cd-vid-card__play">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cd-vid-card__title">Shikha &amp; Ashya</div>
+        </div>
+
+        <!-- Somya & Seem -->
+        <div class="cd-vid-card" data-toggle="modal" data-target="#videoModal1">
+            <div class="cd-vid-card__thumb">
+                <img src="/images/somyaseem_youtubthumb.jpg" alt="Somya & Seem">
+            </div>
+            <div class="cd-vid-card__overlay"></div>
+            <div class="cd-vid-card__play">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cd-vid-card__title">Somya &amp; Seem</div>
+        </div>
+
+        <!-- Anand & Chandni -->
+        <div class="cd-vid-card" data-toggle="modal" data-target="#videoModal2">
+            <div class="cd-vid-card__thumb">
+                <img src="/images/anandchandni_youtubethumb.jpg" alt="Anand & Chandni">
+            </div>
+            <div class="cd-vid-card__overlay"></div>
+            <div class="cd-vid-card__play">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cd-vid-card__title">Anand &amp; Chandni</div>
+        </div>
+
+        <!-- Vatsal & Meghna -->
+        <div class="cd-vid-card" data-toggle="modal" data-target="#videoModal3">
+            <div class="cd-vid-card__thumb">
+                <img src="/images/vatsalmeghna_thumbyoutube.jpg" alt="Vatsal & Meghna">
+            </div>
+            <div class="cd-vid-card__overlay"></div>
+            <div class="cd-vid-card__play">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cd-vid-card__title">Vatsal &amp; Meghna</div>
+        </div>
+
+        <!-- Dharmik & Zeel -->
+        <div class="cd-vid-card" data-toggle="modal" data-target="#videoModal4">
+            <div class="cd-vid-card__thumb">
+                <img src="/images/dharmikzeel_youtubethumb.jpg" alt="Dharmik & Zeel">
+            </div>
+            <div class="cd-vid-card__overlay"></div>
+            <div class="cd-vid-card__play">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="cd-vid-card__title">Dharmik &amp; Zeel</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ── Video Modals ──────────────────────────────────────────── -->
+<div class="modal fade cd-video-modal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shikha &amp; Ashya</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn1">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="videoIframe1" class="embed-responsive-item" src="https://www.youtube.com/embed/pGgFHgvTvME" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn1">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Bootstrap Carousel -->
-<div id="videoCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="video-thumbnail-container">
-                <div class="video-thumbnail" data-toggle="modal" data-target="#videoModal">
-                    <img src="/images/shikhaashya_youtubthumb.jpg" alt="Play Video" class="d-block w-100">
-                    <div class="play-icon">
-                        <img src="/images/youtubelogo.jpg" alt="Play" class="play-icon-img">
-                    </div>
+<div class="modal fade cd-video-modal" id="videoModal1" tabindex="-1" role="dialog" aria-labelledby="videoModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Somya &amp; Seem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn2">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="videoIframe2" class="embed-responsive-item" src="https://www.youtube.com/embed/xEtLmJHfyOY" allowfullscreen></iframe>
                 </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <div class="video-thumbnail-container">
-                <div class="video-thumbnail" data-toggle="modal" data-target="#videoModal1">
-                    <img src="/images/somyaseem_youtubthumb.jpg" alt="Play Video" class="d-block w-100">
-                    <div class="play-icon">
-                        <img src="/images/youtubelogo.jpg" alt="Play" class="play-icon-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-          <div class="carousel-item">
-            <div class="video-thumbnail-container">
-                <div class="video-thumbnail" data-toggle="modal" data-target="#videoModal2">
-                    <img src="/images/anandchandni_youtubethumb.jpg" alt="Play Video" class="d-block w-100">
-                    <div class="play-icon">
-                        <img src="/images/youtubelogo.jpg" alt="Play" class="play-icon-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="video-thumbnail-container">
-                <div class="video-thumbnail" data-toggle="modal" data-target="#videoModal3">
-                    <img src="/images/vatsalmeghna_thumbyoutube.jpg" alt="Play Video" class="d-block w-100">
-                    <div class="play-icon">
-                        <img src="/images/youtubelogo.jpg" alt="Play" class="play-icon-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="video-thumbnail-container">
-                <div class="video-thumbnail" data-toggle="modal" data-target="#videoModal4">
-                    <img src="/images/dharmikzeel_youtubethumb.jpg" alt="Play Video" class="d-block w-100">
-                    <div class="play-icon">
-                        <img src="/images/youtubelogo.jpg" alt="Play" class="play-icon-img">
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn2">Close</button>
             </div>
         </div>
     </div>
-  <a class="carousel-control-prev" href="#videoCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#videoCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="videoModalLabel">Video Title</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn1">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- YouTube Video Embed -->
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe id="videoIframe1" class="embed-responsive-item" src="https://www.youtube.com/embed/pGgFHgvTvME" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn1">Close</button>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="modal fade" id="videoModal1" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="videoModalLabel">Video Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn2">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- YouTube Video Embed -->
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe id="videoIframe2" class="embed-responsive-item" src="https://www.youtube.com/embed/xEtLmJHfyOY" allowfullscreen></iframe>
+<div class="modal fade cd-video-modal" id="videoModal2" tabindex="-1" role="dialog" aria-labelledby="videoModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Anand &amp; Chandni</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn3">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="videoIframe3" class="embed-responsive-item" src="https://www.youtube.com/embed/s4wOT_Qedw8" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn3">Close</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn2">Close</button>
-      </div>
     </div>
-  </div>
 </div>
 
-<div class="modal fade" id="videoModal2" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="videoModalLabel">Video Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn3">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- YouTube Video Embed -->
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe id="videoIframe3" class="embed-responsive-item" src="https://www.youtube.com/embed/s4wOT_Qedw8" allowfullscreen></iframe>
+<div class="modal fade cd-video-modal" id="videoModal3" tabindex="-1" role="dialog" aria-labelledby="videoModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Vatsal &amp; Meghna</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn4">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <!-- TODO: replace VIDEO_ID with the YouTube video ID for Vatsal & Meghna -->
+                    <iframe id="videoIframe4" class="embed-responsive-item" src="" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn4">Close</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn3">Close</button>
-      </div>
     </div>
-  </div>
 </div>
 
-<div class="modal fade" id="videoModal4" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="videoModalLabel">Video Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- YouTube Video Embed -->
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe id="videoIframe4" class="embed-responsive-item" src="https://www.youtube.com/embed/Vd4VQuzDZY0" allowfullscreen></iframe>
+<div class="modal fade cd-video-modal" id="videoModal4" tabindex="-1" role="dialog" aria-labelledby="videoModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Dharmik &amp; Zeel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalCloseBtn5">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="videoIframe5" class="embed-responsive-item" src="https://www.youtube.com/embed/Vd4VQuzDZY0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn5">Close</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalCloseFooterBtn">Close</button>
-      </div>
     </div>
-  </div>
 </div>

@@ -15,7 +15,7 @@
         public static readonly string PhotoGraphy = "Photography";
         public static readonly string PhotoEditing = "Photo Editing";
         public static readonly string CollageDesign = "Collage Design";
-        public static readonly string Videos = "Videos";
+        public static readonly string Videos = "Cinematography";
         public static readonly string LogIn = "Login";
         public static readonly string UploadImages = "Upload Images";
         public static readonly string RemoveImages = "Remove Images";

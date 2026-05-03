@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="/css/aos.css">
-    <link rel="stylesheet" href="/css/fancybox.min.css">
+    <link rel="stylesheet" href="/css/customcss/ModernViewer.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/customcss/HomePage.css">
     <title>@WebsiteData.webTitle</title>
@@ -55,12 +55,16 @@
                                href="@Url.Action("About", "Home")">@PageHeaders.About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "is-active" : "")"
-                               href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.PhotoGraphy ? "is-active" : "")"
                                href="@Url.Action("Photography", "Home")">@PageHeaders.PhotoGraphy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.Videos ? "is-active" : "")"
+                               href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.AlbumDesign ? "is-active" : "")"
+                               href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a>
                         </li>
                         <li class="nav-item">
                             <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.PhotoEditing ? "is-active" : "")"
@@ -70,13 +74,9 @@
                             <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.CollageDesign ? "is-active" : "")"
                                href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="cd-nav-link @(ViewBag.PageTitle == PageHeaders.Videos ? "is-active" : "")"
-                               href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a>
-                        </li>
                     </ul>
                     <div class="cd-navbar__actions">
-                        <a class="cd-navbar__social" href="https://www.instagram.com/creativephotographybychetan/"
+                        <a class="cd-navbar__social" href="https://www.instagram.com/pixel_creator7?igsh=MWJrcmM3dDNzcDd6eQ=="
                            target="_blank" rel="noopener" aria-label="Instagram">
                             <span class="icon-instagram"></span>
                         </a>
@@ -108,7 +108,7 @@
                         We'd love to hear from you and bring your vision to life.
                     </p>
                     <div class="cd-contact__socials">
-                        <a href="https://www.instagram.com/creativephotographybychetan/"
+                        <a href="https://www.instagram.com/pixel_creator7?igsh=MWJrcmM3dDNzcDd6eQ=="
                            target="_blank" rel="noopener" class="cd-social-chip">
                             <span class="icon-instagram"></span>
                             <span>@@creativephotographybychetan</span>
@@ -175,17 +175,17 @@
                     <ul class="cd-footer__list">
                         <li><a href="@Url.Action("Index", "Home")">@PageHeaders.Home</a></li>
                         <li><a href="@Url.Action("About", "Home")">@PageHeaders.About</a></li>
-                        <li><a href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a></li>
                         <li><a href="@Url.Action("Photography", "Home")">@PageHeaders.PhotoGraphy</a></li>
+                        <li><a href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a></li>
+                        <li><a href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a></li>
                         <li><a href="@Url.Action("PhotoEditing", "Home")">@PageHeaders.PhotoEditing</a></li>
                         <li><a href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a></li>
-                        <li><a href="@Url.Action("Videos", "Home")">@PageHeaders.Videos</a></li>
                     </ul>
                 </div>
                 <div class="cd-footer__col">
                     <h6 class="cd-footer__col-title">Follow Us</h6>
                     <div class="cd-footer__social-icons">
-                        <a href="https://www.instagram.com/creativephotographybychetan/"
+                        <a href="https://www.instagram.com/pixel_creator7?igsh=MWJrcmM3dDNzcDd6eQ=="
                            target="_blank" rel="noopener" aria-label="Instagram">
                             <span class="icon-instagram"></span>
                         </a>
@@ -219,9 +219,10 @@
     <script src="/js/jquery.magnific-popup.min.js"></script>
     <script src="/js/aos.js"></script>
     <script src="/js/lozad.min.js"></script>
-    <script src="/js/jquery.fancybox.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/CustomJS/Home.js"></script>
+    <script src="/js/CustomJS/ModernViewer.js"></script>
+    <script src="/js/CustomJS/CursorEffect.js"></script>
     <script>
         $(document).ready(function () {
             if (typeof AOS !== 'undefined') {

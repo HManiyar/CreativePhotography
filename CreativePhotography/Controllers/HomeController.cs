@@ -74,7 +74,9 @@ namespace CreativePhotography.Controllers
             // Apply pagination to original image paths
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allPhotoEditingPaths = originalImagePaths;
+            int photoEditingPageStart = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(photoEditingPageStart)
                                                    .Take(pageSize)
                                                    .ToArray();
 
@@ -85,7 +87,7 @@ namespace CreativePhotography.Controllers
             // Convert original image paths to corresponding compressed image paths
             int totalCompressedImages = compressedImagePaths.Length;
             int totalCompressedPages = (int)Math.Ceiling((double)totalCompressedImages / pageSize);
-            compressedImagePaths = compressedImagePaths.Skip((pageNumber - 1) * pageSize)
+            compressedImagePaths = compressedImagePaths.Skip(photoEditingPageStart)
                                                    .Take(pageSize)
                                                    .ToArray();
 
@@ -94,6 +96,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allPhotoEditingPaths;
+            ViewBag.PageStartIndex = photoEditingPageStart;
             return View();
         }
         public IActionResult CollageDesign(int pageNumber = 1, int pageSize = 9)
@@ -111,7 +115,9 @@ namespace CreativePhotography.Controllers
             // Apply pagination to original image paths
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allCollageDesignPaths = originalImagePaths;
+            int collageDesignPageStart = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(collageDesignPageStart)
                                                    .Take(pageSize)
                                                    .ToArray();
 
@@ -122,7 +128,7 @@ namespace CreativePhotography.Controllers
             // Convert original image paths to corresponding compressed image paths
             int totalCompressedImages = compressedImagePaths.Length;
             int totalCompressedPages = (int)Math.Ceiling((double)totalCompressedImages / pageSize);
-            compressedImagePaths = compressedImagePaths.Skip((pageNumber - 1) * pageSize)
+            compressedImagePaths = compressedImagePaths.Skip(collageDesignPageStart)
                                                    .Take(pageSize)
                                                    .ToArray();
 
@@ -131,6 +137,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allCollageDesignPaths;
+            ViewBag.PageStartIndex = collageDesignPageStart;
             return View();
         }
         public IActionResult Videos()

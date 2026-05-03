@@ -606,3 +606,80 @@
     .cd-footer__col--brand { grid-column: 1; }
     .cd-contact { padding: 3.5rem 1.25rem; }
 }
+
+/* =============================================================
+   Custom Cursor  (pointer devices only)
+   ============================================================= */
+@media (hover: hover) and (pointer: fine) {
+    * { cursor: none !important; }
+    /* restore text cursor inside form controls */
+    input, textarea { cursor: text !important; }
+}
+
+/* ── Wrapper elements (positioned via JS transform) ──────── */
+#cd-cursor-dot,
+#cd-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(0, 0); /* overridden by JS */
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    will-change: transform;
+}
+
+#cd-cursor-ring { z-index: 99998; }
+
+#cd-cursor-dot.cd-cursor--visible,
+#cd-cursor-ring.cd-cursor--visible {
+    opacity: 1;
+}
+
+/* ── Dot ─────────────────────────────────────────────────── */
+#cd-cursor-dot .cd-cursor__inner {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: -3.5px;
+    left: -3.5px;
+    background: #efd686;
+    border-radius: 50%;
+    transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity  0.18s ease;
+}
+
+#cd-cursor-dot.cd-cursor--hover .cd-cursor__inner {
+    transform: scale(0);
+    opacity: 0;
+}
+
+#cd-cursor-dot.cd-cursor--click .cd-cursor__inner {
+    transform: scale(2.5);
+}
+
+/* ── Ring ────────────────────────────────────────────────── */
+#cd-cursor-ring .cd-cursor__inner {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: -17px;
+    left: -17px;
+    border: 1.5px solid rgba(239, 214, 134, 0.6);
+    border-radius: 50%;
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                border-color 0.25s ease,
+                background   0.25s ease;
+}
+
+#cd-cursor-ring.cd-cursor--hover .cd-cursor__inner {
+    transform: scale(1.7);
+    border-color: rgba(239, 214, 134, 0.95);
+    background: rgba(239, 214, 134, 0.09);
+}
+
+#cd-cursor-ring.cd-cursor--click .cd-cursor__inner {
+    transform: scale(0.75);
+    border-color: rgba(239, 214, 134, 1);
+}

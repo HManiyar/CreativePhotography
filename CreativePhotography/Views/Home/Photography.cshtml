@@ -1,70 +1,55 @@
-﻿@using CreativePhotography.Content
+@using CreativePhotography.Content
+
 @{
     ViewData["Title"] = "Photography";
     Layout = "~/Views/Shared/_SharedUserView.cshtml";
 }
 
-<div class="row mb-3">
-	<div class="col-12 text-center">
-		<h2 class="heading">@PageHeaders.PhotoGraphy</h2>
-	</div>
-</div>
-<section class="site-section">
-<div class="container">
-    @{
-        // Define an array of image names
-        string[] imageNames = new string[] { 
-            "Pre_Wed.jpg", "Engagement.jpg", "Wed.jpg",
-            "BabyBump.jpg", "Bday.jpg", "Decoration.jpg"
-        };
+<link href="~/css/customcss/FlexibleImageGalleryStyles.css" rel="stylesheet" />
 
-        // Define an array of text headers
-        string[] textheaders = new string[] { 
-            "Pre-Wedding", "Engagement", "Wedding", 
-            "Maternity Shoot", "Birthday", "Decoration" 
-        };
-
-        // Prepare the text descriptions for each category
-        string[] imageTexts = new string[] {
-            "Capture the essence of your love before the big day. Our pre-wedding photography sessions offer intimate and memorable moments for you and your partner.",
-            "Celebrate the joy of engagement with elegant and heartwarming photographs. Our engagement sessions capture the excitement and anticipation of your journey together.",
-            "Relive the magic of your wedding day with our exquisite wedding photography. We specialize in capturing every precious moment, ensuring your memories last a lifetime.",
-            "Welcome your bundle of joy with adorable baby shower photography. Our photographers will capture the love and excitement surrounding this special occasion.",
-            "Celebrate life's milestones with vibrant birthday photography. From the first birthday to milestone celebrations, we'll capture the joy and excitement of each moment.",
-            "Transform your event with stunning decoration photography. From floral arrangements to intricate details, we'll capture the beauty and elegance of your decorations."
-        };
-
-        // Define an array of links for each header
-        string[] headerLinks = new string[] {
-            Url.Action("PreWedding", "Photography") ?? "",
-            Url.Action("Engagement", "Photography") ?? "",
-            Url.Action("Wedding", "Photography") ?? "",
-            Url.Action("BabyShower", "Photography") ?? "",
-            Url.Action("Birthday", "Photography") ?? "",
-            Url.Action("Decoration", "Photography") ?? ""
-        };
-
-    }
-
-@for (int i = 0; i < imageNames.Length; i++)
-{
-    <div class="row mb-3"> 
-        <div class="col-md-6 d-flex align-items-center justify-content-center">
-            <a href="@headerLinks[i]">
-                <img src="/images/@imageNames[i]" class="img-fluid img-thumbnail mb-4" alt="Image @(i + 1)">
-                <!-- Added mb-4 class to add margin bottom to the image -->
-            </a>
-        </div>
-        <div class="col-md-6">
-            <!-- Text header -->
-            <h5 style="margin-top: 20px;"><a href="@headerLinks[i]" style="color: black; font-weight: bold;">@Html.Raw(textheaders[i])</a></h5>
-            <!-- Added margin-top to create space between image and text header -->
-            <!-- Paragraph text -->
-            <p class="text-justify">@Html.Raw(imageTexts[i])</p>
-        </div>
-    </div>
+@{
+    string[] imageNames = {
+        "Pre_Wed.jpg", "Engagement.jpg", "Wed.jpg",
+        "BabyBump.jpg", "Bday.jpg", "Decoration.jpg"
+    };
+    string[] textheaders = {
+        "Pre-Wedding", "Engagement", "Wedding",
+        "Maternity Shoot", "Birthday", "Decoration"
+    };
+    string[] imageTexts = {
+        "Capture the essence of your love before the big day. Intimate, candid sessions that tell your story together.",
+        "Celebrate the joy of engagement with elegant and heartwarming photographs that capture the excitement of your journey.",
+        "Relive the magic of your wedding day. We specialise in capturing every precious moment so your memories last a lifetime.",
+        "Welcome your bundle of joy with beautifully composed maternity photography celebrating this extraordinary time.",
+        "From the first birthday to milestone celebrations — vibrant photographs that capture the joy of every special moment.",
+        "Transform your event with stunning detail photography, from floral arrangements to every intricate decoration."
+    };
+    string[] headerLinks = {
+        Url.Action("PreWedding", "Photography") ?? "",
+        Url.Action("Engagement", "Photography") ?? "",
+        Url.Action("Wedding", "Photography") ?? "",
+        Url.Action("BabyShower", "Photography") ?? "",
+        Url.Action("Birthday", "Photography") ?? "",
+        Url.Action("Decoration", "Photography") ?? ""
+    };
 }
 
-
+<div class="col-12 text-center">
+    <h2 class="heading">@PageHeaders.PhotoGraphy</h2>
 </div>
-</section>
+
+<div class="cd-cat-grid cd-cat-grid--3">
+    @for (int i = 0; i < imageNames.Length; i++)
+    {
+        <a href="@headerLinks[i]" class="cd-cat-card">
+            <div class="cd-cat-card__thumb">
+                <img src="/images/@imageNames[i]" alt="@textheaders[i]">
+            </div>
+            <div class="cd-cat-card__body">
+                <h3 class="cd-cat-card__title">@textheaders[i]</h3>
+                <p class="cd-cat-card__desc">@imageTexts[i]</p>
+                <span class="cd-cat-card__cta">View Gallery &rarr;</span>
+            </div>
+        </a>
+    }
+</div>

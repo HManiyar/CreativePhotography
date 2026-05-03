@@ -22,7 +22,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -37,6 +39,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
 
             return View();
         }
@@ -53,7 +57,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -68,6 +74,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
         public IActionResult Wedding(int pageNumber = 1, int pageSize = 9)
@@ -82,7 +90,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -97,6 +107,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
         public IActionResult BabyShower(int pageNumber = 1, int pageSize = 9)
@@ -110,7 +122,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -125,6 +139,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
 
@@ -139,7 +155,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -154,6 +172,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
         public IActionResult Decoration(int pageNumber = 1, int pageSize = 9)
@@ -168,7 +188,9 @@ namespace CreativePhotography.Controllers
                                                    .ToArray();
             int totalImages = originalImagePaths.Length;
             int totalPages = (int)Math.Ceiling((double)totalImages / pageSize);
-            originalImagePaths = originalImagePaths.Skip((pageNumber - 1) * pageSize)
+            string[] allImagePaths = originalImagePaths;
+            int pageStartIndex = (pageNumber - 1) * pageSize;
+            originalImagePaths = originalImagePaths.Skip(pageStartIndex)
                                                    .Take(pageSize)
                                                    .ToArray();
             string[] compressedImagePaths = Directory.GetFiles(uploadPath)
@@ -183,6 +205,8 @@ namespace CreativePhotography.Controllers
             ViewBag.CompressedImagePaths = compressedImagePaths;
             ViewBag.PageNumber = pageNumber;
             ViewBag.TotalPages = totalPages;
+            ViewBag.AllImagePaths = allImagePaths;
+            ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
         private int GetImageHeight(string imagePath)
