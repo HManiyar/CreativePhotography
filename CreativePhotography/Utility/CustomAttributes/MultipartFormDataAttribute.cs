@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CreativePhotography.Utility.CustomAttributes
+namespace PixelCreator.Utility.CustomAttributes
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class MultipartFormDataAttribute : ActionFilterAttribute

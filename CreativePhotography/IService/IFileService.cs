@@ -1,6 +1,6 @@
-﻿using CreativePhotography.Models;
+﻿using PixelCreator.Models;
 
-namespace CreativePhotography.IService
+namespace PixelCreator.IService
 {
     public interface IFileService
     {

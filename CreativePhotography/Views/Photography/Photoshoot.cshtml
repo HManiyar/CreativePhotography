@@ -1,0 +1,62 @@
+﻿@using PixelCreator.Content
+
+@{
+    ViewBag.ActiveGallery = "Photoshoot";
+    ViewData["Title"] = "Product Photoshoot";
+    Layout = "~/Views/Shared/_SharedUserView.cshtml";
+}
+
+<link href="~/css/customcss/FlexibleImageGalleryStyles.css" rel="stylesheet" />
+
+@{
+    ViewBag.ActiveGallery = "Photoshoot";
+    string[] thumbs = {
+        "/UploadedFiles/Photoshoot/E-Commerce/Pixelcreator_Ecommerce_01.jpg",
+        "/UploadedFiles/Photoshoot/Glass-Product/Pixelcreato_sunglasses_01.jpg",
+        "/UploadedFiles/Photoshoot/Ice-Cream/Pixelcreator_Ice-cream-01.jpg",
+        "/UploadedFiles/Photoshoot/Poches/Pixelcreator_Pouchpack_01.jpg",
+        "/UploadedFiles/Photoshoot/Stone-Items/Pixelcreator_Stone_Item_01.jpg"
+    };
+    string[] headers = {
+        PageHeaders.PhotoshootECommerce,
+        PageHeaders.PhotoshootGlassProduct,
+        PageHeaders.PhotoshootIceCream,
+        PageHeaders.PhotoshootPoches,
+        PageHeaders.PhotoshootStoneItems
+    };
+    string[] descs = {
+        "Professional e-commerce product shots crafted to drive conversions and showcase every detail.",
+        "Crystal-clear glassware photography with stunning light handling and reflections.",
+        "Vibrant ice cream product photography that makes every scoop look irresistible.",
+        "Clean pouch and packaging photography for standout retail and online presence.",
+        "Textured stone product photography highlighting natural detail and craftsmanship."
+    };
+    string[] links = {
+        Url.Action("PhotoshootECommerce", "Photography") ?? "",
+        Url.Action("PhotoshootGlassProduct", "Photography") ?? "",
+        Url.Action("PhotoshootIceCream", "Photography") ?? "",
+        Url.Action("PhotoshootPoches", "Photography") ?? "",
+        Url.Action("PhotoshootStoneItems", "Photography") ?? ""
+    };
+}
+
+<div class="col-12 text-center">
+    <h2 class="heading">@PageHeaders.Photoshoot</h2>
+</div>
+@await Html.PartialAsync("_PhotographyNav")
+
+<div class="cd-cat-grid cd-cat-grid--3">
+    @for (int i = 0; i < headers.Length; i++)
+    {
+        <a href="@links[i]" class="cd-cat-card">
+            <div class="cd-cat-card__thumb">
+                <img src="@thumbs[i]" alt="@headers[i]">
+            </div>
+            <div class="cd-cat-card__body">
+                <h3 class="cd-cat-card__title">@headers[i]</h3>
+                <p class="cd-cat-card__desc">@descs[i]</p>
+                <span class="cd-cat-card__cta">View Gallery &rarr;</span>
+            </div>
+        </a>
+    }
+</div>

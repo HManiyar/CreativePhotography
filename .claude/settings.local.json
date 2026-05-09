@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(cat C:\\\\\\\\Users\\\\\\\\admin\\\\\\\\.claude\\\\\\\\projects\\\\\\\\c--Projects-CreativeDesigners\\\\\\\\dda10128-df9b-4848-b9fe-3ffac96b3efb\\\\\\\\tool-results\\\\\\\\bjem04nyo.txt)",
-      "Bash(cat C:\\\\\\\\Users\\\\\\\\admin\\\\\\\\.claude\\\\\\\\projects\\\\\\\\c--Projects-CreativeDesigners\\\\\\\\dda10128-df9b-4848-b9fe-3ffac96b3efb\\\\\\\\tool-results\\\\\\\\bx0q2z4eu.txt)"
+      "Bash(cat C:\\\\\\\\Users\\\\\\\\admin\\\\\\\\.claude\\\\\\\\projects\\\\\\\\c--Projects-CreativeDesigners\\\\\\\\dda10128-df9b-4848-b9fe-3ffac96b3efb\\\\\\\\tool-results\\\\\\\\bx0q2z4eu.txt)",
+      "Bash(git -C \"c:/Projects/CreativeDesigners\" log --oneline hitanshu/pixelcreatoruichanges)",
+      "Bash(git -C \"c:/Projects/CreativeDesigners\" show hitanshu/pixelcreatoruichanges --stat)"
     ]
   }
 }

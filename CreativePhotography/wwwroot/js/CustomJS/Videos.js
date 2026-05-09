@@ -64,9 +64,33 @@
         $iframe.attr('src', src);
     }
 
-    // For safety, also handle the modal hide event
     $('#videoModal2').on('hide.bs.modal', function () {
-        console.log("Modal is being hidden.");
-        stopVideo2(); // Call stopVideo2 for the first video
+        stopVideo4();
+    });
+
+    $(document).on('click', '#modalCloseBtn6, #modalCloseFooterBtn6', function () {
+        stopVideo6();
+    });
+
+    function stopVideo6() {
+        var $iframe = $('#videoIframe6');
+        $iframe.attr('src', $iframe.attr('src'));
+    }
+
+    $('#videoModal5').on('hide.bs.modal', function () {
+        stopVideo6();
+    });
+
+    $(document).on('click', '#modalCloseBtn7, #modalCloseFooterBtn7', function () {
+        stopVideo7();
+    });
+
+    function stopVideo7() {
+        var $iframe = $('#videoIframe7');
+        $iframe.attr('src', $iframe.attr('src'));
+    }
+
+    $('#videoModal6').on('hide.bs.modal', function () {
+        stopVideo7();
     });
 });

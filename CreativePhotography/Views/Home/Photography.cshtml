@@ -1,4 +1,4 @@
-@using CreativePhotography.Content
+﻿@using PixelCreator.Content
 
 @{
     ViewData["Title"] = "Photography";
@@ -10,11 +10,14 @@
 @{
     string[] imageNames = {
         "Pre_Wed.jpg", "Engagement.jpg", "Wed.jpg",
-        "BabyBump.jpg", "Bday.jpg", "Decoration.jpg"
+        "BabyBump.jpg", "Bday.jpg", "Decoration.jpg",
+        "Photoshoot.jpg",
+        "IndustrialPhotoshoot.jpg"
     };
     string[] textheaders = {
         "Pre-Wedding", "Engagement", "Wedding",
-        "Maternity Shoot", "Birthday", "Decoration"
+        "Maternity Shoot", "Birthday", "Decoration",
+        "Product Photoshoot", "Industrial Photoshoot"
     };
     string[] imageTexts = {
         "Capture the essence of your love before the big day. Intimate, candid sessions that tell your story together.",
@@ -22,7 +25,9 @@
         "Relive the magic of your wedding day. We specialise in capturing every precious moment so your memories last a lifetime.",
         "Welcome your bundle of joy with beautifully composed maternity photography celebrating this extraordinary time.",
         "From the first birthday to milestone celebrations — vibrant photographs that capture the joy of every special moment.",
-        "Transform your event with stunning detail photography, from floral arrangements to every intricate decoration."
+        "Transform your event with stunning detail photography, from floral arrangements to every intricate decoration.",
+        "Studio-grade product photography for e-commerce, packaging, food, and lifestyle brands — crafted to captivate.",
+        "Powerful industrial and aerial photography that captures the scale, precision, and story of your facility."
     };
     string[] headerLinks = {
         Url.Action("PreWedding", "Photography") ?? "",
@@ -30,7 +35,9 @@
         Url.Action("Wedding", "Photography") ?? "",
         Url.Action("BabyShower", "Photography") ?? "",
         Url.Action("Birthday", "Photography") ?? "",
-        Url.Action("Decoration", "Photography") ?? ""
+        Url.Action("Decoration", "Photography") ?? "",
+        Url.Action("Photoshoot", "Photography") ?? "",
+        Url.Action("IndustrialPhotoshoot", "Photography") ?? ""
     };
 }
 

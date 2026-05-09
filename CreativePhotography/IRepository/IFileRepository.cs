@@ -1,6 +1,6 @@
-﻿using CreativePhotography.Models;
+﻿using PixelCreator.Models;
 
-namespace CreativePhotography.IRepository
+namespace PixelCreator.IRepository
 {
     public interface IFileRepository
     {

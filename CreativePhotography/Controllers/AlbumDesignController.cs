@@ -1,8 +1,8 @@
-﻿using CreativePhotography.Content;
+﻿using PixelCreator.Content;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 
-namespace CreativePhotography.Controllers
+namespace PixelCreator.Controllers
 {
     public class AlbumDesignController : Controller
     {

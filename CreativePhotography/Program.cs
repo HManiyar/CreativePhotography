@@ -1,8 +1,8 @@
-using CreativePhotography.Context;
-using CreativePhotography.IRepository;
-using CreativePhotography.IService;
-using CreativePhotography.Repository;
-using CreativePhotography.Service;
+﻿using PixelCreator.Context;
+using PixelCreator.IRepository;
+using PixelCreator.IService;
+using PixelCreator.Repository;
+using PixelCreator.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
