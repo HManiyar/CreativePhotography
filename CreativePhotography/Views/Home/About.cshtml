@@ -1,179 +1,495 @@
 ﻿@using PixelCreator.Content
+
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_SharedUserView.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="~/css/customcss/AboutPage.css" rel="stylesheet" />
 </head>
+
 <body>
 
     @* ── Page Hero Banner ─────────────────────────────────────── *@
     <section class="about-hero">
-        <div class="about-hero__content" data-aos="fade-up" data-aos-duration="800">
-            <span class="about-hero__eyebrow">Pixel Creator</span>
-            <h1 class="about-hero__title">About Us</h1>
-            <p class="about-hero__sub">Crafting Stories Through Light, Shadow &amp; Artistry</p>
+        <div class="about-hero__content"
+             data-aos="fade-up"
+             data-aos-duration="800">
+
+            <span class="about-hero__eyebrow">
+                Pixel Creator
+            </span>
+
+            <h1 class="about-hero__title">
+                We Capture the Moments
+                You Didn't Even Know Happened.
+            </h1>
+
+            <p class="about-hero__sub">
+                Fine-Art Candid Photography and Cinematic Storytelling
+                for Unforgettable Celebrations.
+            </p>
+
         </div>
     </section>
+
 
     @* ── Our Story ────────────────────────────────────────────── *@
     <section class="about-story">
+
         <div class="about-story__inner">
 
-            <div data-aos="fade-right" data-aos-duration="750">
-                <span class="about-story__label">Our Story</span>
+            @* Story Content *@
+            <div data-aos="fade-right"
+                 data-aos-duration="750">
+
+                <span class="about-story__label">
+                    Our Story
+                </span>
+
                 <h2 class="about-story__heading">
-                    More Than<br>
-                    a <em>Design Studio</em>
+                    Capturing Moments.<br>
+                    <em>Preserving Emotions.</em>
                 </h2>
+
                 <p class="about-story__text">
-                    Pixel Creator is built on one belief — the art of the photographer should
-                    always take center stage, never the designer. Every album we create is a canvas
-                    that amplifies the emotions and aesthetic values already captured in the frame.
+                    Pixel Creator is built on one core belief: your most
+                    crucial moments deserve to be documented with absolute
+                    authenticity and cinematic precision.
                 </p>
+
                 <p class="about-story__text">
-                    We offer both classic and contemporary designs that meet today's trends in album
-                    presentation, while remaining timeless enough to be treasured for generations.
-                    From artistic handmade covers and professional binding to dramatic layouts and
-                    bespoke cameos — our work consistently exceeds the expectations of both
-                    photographers and their clients.
+                    Founded by Chetan, we are a premier photography and
+                    cinematography team dedicated to capturing the
+                    unscripted reality of your events.
                 </p>
+
+                <p class="about-story__text">
+                    We do not stage awkward poses or manufacture fake
+                    emotions. Instead, we act as meticulous observers,
+                    seamlessly blending into your celebration to capture
+                    genuine laughter, subtle glances, and the raw beauty
+                    of your day as it naturally unfolds.
+                </p>
+
             </div>
 
-            <div data-aos="fade-left" data-aos-duration="750" data-aos-delay="120">
+
+            @* Pull Quote *@
+            <div data-aos="fade-left"
+                 data-aos-duration="750"
+                 data-aos-delay="120">
+
                 <div class="about-quote-card">
+
                     <blockquote>
-                        "We customize every design to the client's requirement — whether it's the
-                        balance of a landscape spread or the intimacy of a portrait page, we make
-                        the photograph the hero."
+                        "We don't just record events; we engineer visual
+                        legacies. Anyone can ask you to smile at a camera,
+                        but true artistry lies in capturing the electric,
+                        unscripted emotion when you think no one is watching."
                     </blockquote>
-                    <cite>— Pixel Creator Team</cite>
+
+                    <cite>
+                        — Chetan &amp; The Pixel Creator Team
+                    </cite>
+
                 </div>
+
             </div>
 
         </div>
+
     </section>
 
-    @* ── Why Choose Us ────────────────────────────────────────── *@
+
+    @* ── Our Capabilities ─────────────────────────────────────── *@
     <section class="about-values">
-        <div class="about-values__header" data-aos="fade-up" data-aos-duration="700">
-            <span class="cd-eyebrow">Why Choose Us</span>
-            <h2 class="about-values__title">Our Promise</h2>
+
+        <div class="about-values__header"
+             data-aos="fade-up"
+             data-aos-duration="700">
+
+            <span class="cd-eyebrow">
+                What We Do
+            </span>
+
+            <h2 class="about-values__title">
+                Our Capabilities
+            </h2>
+
             <div class="portfolio-divider"></div>
+
+            <p class="about-story__text">
+                We offer a complete, high-end visual experience tailored
+                for modern weddings, corporate events, and premium
+                celebrations.
+            </p>
+
         </div>
+
 
         <div class="about-values__grid">
 
-            <div class="value-card" data-aos="fade-up" data-aos-delay="0" data-aos-duration="700">
+
+            @* Fine-Art Candid Photography *@
+            <div class="value-card"
+                 data-aos="fade-up"
+                 data-aos-delay="0"
+                 data-aos-duration="700">
+
                 <div class="value-icon">
+
                     <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M3 12h1M20 12h1M12 3v1M12 20v1"/>
-                        <path d="M5.6 5.6l.7.7M17.7 17.7l.7.7M5.6 18.4l.7-.7M17.7 6.3l.7-.7"/>
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M3 12h1M20 12h1M12 3v1M12 20v1" />
+                        <path d="M5.6 5.6l.7.7M17.7 17.7l.7.7M5.6 18.4l.7-.7M17.7 6.3l.7-.7" />
                     </svg>
+
                 </div>
-                <h3 class="value-card__title">Photography First</h3>
+
+                <h3 class="value-card__title">
+                    Fine-Art Candid Photography
+                </h3>
+
                 <p class="value-card__desc">
-                    Our designs amplify your photographs, never overshadow them. The image always
-                    remains the star of every page.
+                    We capture genuine emotions, spontaneous laughter,
+                    subtle glances, and unforgettable moments exactly
+                    as they naturally unfold.
                 </p>
+
             </div>
 
-            <div class="value-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+
+            @* Cinematic Storytelling *@
+            <div class="value-card"
+                 data-aos="fade-up"
+                 data-aos-delay="100"
+                 data-aos-duration="700">
+
                 <div class="value-icon">
+
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 20h9"/>
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                     </svg>
+
                 </div>
-                <h3 class="value-card__title">Fully Customized</h3>
+
+                <h3 class="value-card__title">
+                    Cinematic Storytelling
+                </h3>
+
                 <p class="value-card__desc">
-                    No two clients are alike. Every layout is tailored precisely to your creative
-                    vision, story, and style preferences.
+                    From cinematic highlight films to beautifully crafted
+                    visual stories, we transform your celebration into
+                    something you can relive for years to come.
                 </p>
+
             </div>
 
-            <div class="value-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+
+            @* Complete Visual Production *@
+            <div class="value-card"
+                 data-aos="fade-up"
+                 data-aos-delay="200"
+                 data-aos-duration="700">
+
                 <div class="value-icon">
+
                     <svg viewBox="0 0 24 24">
-                        <polyline points="20 6 9 17 4 12"/>
+                        <polyline points="20 6 9 17 4 12" />
                     </svg>
+
                 </div>
-                <h3 class="value-card__title">Exceptional Quality</h3>
+
+                <h3 class="value-card__title">
+                    Complete Visual Production
+                </h3>
+
                 <p class="value-card__desc">
-                    From premium binding to color accuracy, every detail is held to the highest
-                    standard of craftsmanship.
+                    From sweeping aerial perspectives and fine-art
+                    portraiture to cinematic color grading and premium
+                    album design, every detail is handled with precision.
                 </p>
+
             </div>
+
 
         </div>
+
     </section>
 
-    @* ── Our Expertise (Services) ─────────────────────────────── *@
+
+    @* ── Our Expertise / Services ─────────────────────────────── *@
     <section class="about-services">
-        <div class="about-services__header" data-aos="fade-up" data-aos-duration="700">
-            <span class="cd-eyebrow">What We Offer</span>
-            <h2 class="about-services__title">Our Expertise</h2>
+
+        <div class="about-services__header"
+             data-aos="fade-up"
+             data-aos-duration="700">
+
+            <span class="cd-eyebrow">
+                Our Expertise
+            </span>
+
+            <h2 class="about-services__title">
+                Everything Your Story Needs
+            </h2>
+
             <div class="portfolio-divider"></div>
+
         </div>
+
 
         <div class="about-services__grid">
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="0"   data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="0"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Wedding Photography</span>
+
+                <span class="about-service-item__label">
+                    Wedding Photography
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="60"  data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="60"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Pre-Wedding Sessions</span>
+
+                <span class="about-service-item__label">
+                    Candid Photography
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="120" data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="120"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Engagement Photography</span>
+
+                <span class="about-service-item__label">
+                    Pre-Wedding Sessions
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="0"   data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="0"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Album Designing</span>
+
+                <span class="about-service-item__label">
+                    Cinematography
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="60"  data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="60"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Collage Designing</span>
+
+                <span class="about-service-item__label">
+                    Cinematic Highlight Films
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="120" data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="120"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Photo Editing &amp; Retouching</span>
+
+                <span class="about-service-item__label">
+                    Aerial &amp; Drone Photography
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="0"   data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="0"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Event Decoration</span>
+
+                <span class="about-service-item__label">
+                    Corporate Events
+                </span>
+
             </div>
 
-            <div class="about-service-item" data-aos="fade-up" data-aos-delay="60"  data-aos-duration="600">
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="60"
+                 data-aos-duration="600">
+
                 <span class="about-service-item__dot"></span>
-                <span class="about-service-item__label">Corporate Photography</span>
+
+                <span class="about-service-item__label">
+                    Fine-Art Portraiture
+                </span>
+
+            </div>
+
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="120"
+                 data-aos-duration="600">
+
+                <span class="about-service-item__dot"></span>
+
+                <span class="about-service-item__label">
+                    Premium Album Designing
+                </span>
+
+            </div>
+
+
+            <div class="about-service-item"
+                 data-aos="fade-up"
+                 data-aos-delay="180"
+                 data-aos-duration="600">
+
+                <span class="about-service-item__dot"></span>
+
+                <span class="about-service-item__label">
+                    Photo Editing &amp; Color Grading
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    @* ── Final Story / Quality Section ────────────────────────── *@
+    <section class="about-story">
+
+        <div class="about-story__inner">
+
+            <div data-aos="fade-right"
+                 data-aos-duration="750">
+
+                <span class="about-story__label">
+                    The Final Frame
+                </span>
+
+                <h2 class="about-story__heading">
+                    Crafted to Be<br>
+                    <em>Remembered Forever.</em>
+                </h2>
+
+                <p class="about-story__text">
+                    Our technical precision in the field is matched only
+                    by our dedication to the final deliverable.
+                </p>
+
+                <p class="about-story__text">
+                    Whether we are color-grading cinematic highlight films
+                    or meticulously designing multi-spread custom wedding
+                    albums, our focus remains absolute.
+                </p>
+
+                <p class="about-story__text">
+                    We create more than photographs and films. We create
+                    tangible visual legacies that allow you to relive the
+                    exact emotion of your most important moments.
+                </p>
+
+            </div>
+
+
+            <div data-aos="fade-left"
+                 data-aos-duration="750"
+                 data-aos-delay="120">
+
+                <div class="about-quote-card">
+
+                    <blockquote>
+                        Every frame has a story. Every story deserves to
+                        be remembered exactly as it happened.
+                    </blockquote>
+
+                    <cite>
+                        — Pixel Creator
+                    </cite>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
+
 
     @* ── CTA Banner ───────────────────────────────────────────── *@
     <section class="about-cta">
-        <div class="about-cta__inner" data-aos="fade-up" data-aos-duration="750">
-            <span class="about-cta__eyebrow">Let's Work Together</span>
-            <h2 class="about-cta__title">Ready to Create<br>Something Beautiful?</h2>
-            <p class="about-cta__sub">Reach out and let's bring your vision to life.</p>
-            <a href="#section-contact" class="cd-btn cd-btn--gold-solid smoothscroll">Book a Session</a>
+
+        <div class="about-cta__inner"
+             data-aos="fade-up"
+             data-aos-duration="750">
+
+            <span class="about-cta__eyebrow">
+                Let's Create Something Unforgettable
+            </span>
+
+            <h2 class="about-cta__title">
+                Ready to Secure<br>
+                Your Date?
+            </h2>
+
+            <p class="about-cta__sub">
+                Let's discuss your vision and create something
+                you'll remember forever.
+            </p>
+
+            @*
+                IMPORTANT:
+                Change #section-contact if your newly optimized
+                contact form uses a different ID or URL.
+            *@
+
+            <a href="#section-contact"
+               class="cd-btn cd-btn--gold-solid smoothscroll">
+
+                Get My Quote
+
+            </a>
+
         </div>
+
     </section>
 
 </body>
+
 </html>
