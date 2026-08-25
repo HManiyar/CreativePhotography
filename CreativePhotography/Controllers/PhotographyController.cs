@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 
-namespace CreativePhotography.Controllers
+namespace PixelCreator.Controllers
 {
     public class PhotographyController : Controller
     {
@@ -209,6 +209,107 @@ namespace CreativePhotography.Controllers
             ViewBag.PageStartIndex = pageStartIndex;
             return View();
         }
+        public IActionResult IndustrialPhotoshoot()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Industrial-Photoshoot");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Industrial-Photoshoot/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
+        public IActionResult Photoshoot()
+        {
+            return View();
+        }
+
+        public IActionResult PhotoshootECommerce()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Photoshoot", "E-Commerce");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Photoshoot/E-Commerce/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
+        public IActionResult PhotoshootGlassProduct()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Photoshoot", "Glass-Product");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Photoshoot/Glass-Product/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
+        public IActionResult PhotoshootIceCream()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Photoshoot", "Ice-Cream");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Photoshoot/Ice-Cream/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
+        public IActionResult PhotoshootPoches()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Photoshoot", "Poches");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Photoshoot/Poches/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
+        public IActionResult PhotoshootStoneItems()
+        {
+            string uploadPath = Path.Combine("wwwroot", "UploadedFiles", "Photoshoot", "Stone-Items");
+            EnsureUploadDirectoriesExist(uploadPath);
+            string[] imagePaths = Directory.GetFiles(uploadPath)
+                .Select(f => $"/UploadedFiles/Photoshoot/Stone-Items/{Path.GetFileName(f)}")
+                .OrderBy(f => f)
+                .ToArray();
+            ViewBag.OriginalImagePaths = imagePaths;
+            ViewBag.AllImagePaths = imagePaths;
+            ViewBag.PageNumber = 1;
+            ViewBag.TotalPages = 1;
+            ViewBag.PageStartIndex = 0;
+            return View();
+        }
+
         private int GetImageHeight(string imagePath)
         {
             // Get the web root path

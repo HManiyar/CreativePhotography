@@ -1,0 +1,64 @@
+@using PixelCreator.Content
+@{
+    string active = ViewBag.ActiveGallery as string ?? "";
+    var items = new[]
+    {
+        new { Label = "Pre-Wedding",          Action = "PreWedding",          Key = "PreWedding" },
+        new { Label = "Engagement",           Action = "Engagement",          Key = "Engagement" },
+        new { Label = "Wedding",              Action = "Wedding",             Key = "Wedding" },
+        new { Label = "Maternity Shoot",      Action = "BabyShower",         Key = "BabyShower" },
+        new { Label = "Birthday",             Action = "Birthday",            Key = "Birthday" },
+        new { Label = "Decoration",           Action = "Decoration",          Key = "Decoration" },
+        new { Label = "Product Photoshoot",   Action = "Photoshoot",          Key = "Photoshoot" },
+        new { Label = "Industrial Photoshoot",Action = "IndustrialPhotoshoot",Key = "IndustrialPhotoshoot" },
+    };
+}
+
+<style>
+    .pg-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 1rem 1.5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .pg-nav__pill {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.42rem 1.1rem;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        white-space: nowrap;
+    }
+
+    .pg-nav__pill:hover {
+        border-color: #efd686;
+        color: #efd686;
+        text-decoration: none;
+    }
+
+    .pg-nav__pill.is-active {
+        background: #efd686;
+        border-color: #efd686;
+        color: #111;
+    }
+</style>
+
+<nav class="pg-nav" aria-label="Photography galleries">
+    @foreach (var item in items)
+    {
+        <a href="@Url.Action(item.Action, "Photography")"
+           class="pg-nav__pill @(active == item.Key ? "is-active" : "")">
+            @item.Label
+        </a>
+    }
+</nav>

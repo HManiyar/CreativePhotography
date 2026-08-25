@@ -1,9 +1,9 @@
-﻿using CreativePhotography.Context;
-using CreativePhotography.IRepository;
-using CreativePhotography.Models;
+﻿using PixelCreator.Context;
+using PixelCreator.IRepository;
+using PixelCreator.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CreativePhotography.Repository
+namespace PixelCreator.Repository
 {
     public class FileRepository : IFileRepository
     {

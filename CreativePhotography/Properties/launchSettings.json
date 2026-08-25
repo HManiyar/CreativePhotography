@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "CreativePhotography": {
+    "PixelCreator": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -1,10 +1,10 @@
-﻿using CreativePhotography.Content;
-using CreativePhotography.IService;
-using CreativePhotography.Models;
+﻿using PixelCreator.Content;
+using PixelCreator.IService;
+using PixelCreator.Models;
 using System.Net;
 using System.Net.Mail;
 
-namespace CreativePhotography.Service
+namespace PixelCreator.Service
 {
     public class MailService : IMailService
     {
@@ -44,7 +44,7 @@ namespace CreativePhotography.Service
                     mailMessage.IsBodyHtml = true; // Set to true for HTML content
 
                     // Set email headers
-                    mailMessage.Headers.Add("X-Mailer", "CreativePhotography"); // Set your application name
+                    mailMessage.Headers.Add("X-Mailer", "PixelCreator"); // Set your application name
 
                     // Send email asynchronously
                     await smtpClient.SendMailAsync(mailMessage);

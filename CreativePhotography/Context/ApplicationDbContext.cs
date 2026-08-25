@@ -1,7 +1,7 @@
-﻿using CreativePhotography.Models;
+﻿using PixelCreator.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CreativePhotography.Context
+namespace PixelCreator.Context
 {
     public class ApplicationDbContext:DbContext
     {

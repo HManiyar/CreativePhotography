@@ -1,12 +1,12 @@
-﻿using CreativePhotography.Content;
-using CreativePhotography.IService;
-using CreativePhotography.Utility.CustomAttributes;
+﻿using PixelCreator.Content;
+using PixelCreator.IService;
+using PixelCreator.Utility.CustomAttributes;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace CreativePhotography.Controllers
+namespace PixelCreator.Controllers
 {
     public class AdminController : Controller
     {

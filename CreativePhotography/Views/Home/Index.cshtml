@@ -1,4 +1,4 @@
-@using CreativePhotography.Content
+﻿@using PixelCreator.Content
 @{
     Layout = "~/Views/Shared/_SharedUserView.cshtml";
     string[] originalImagePaths = (ViewBag.OriginalImagePaths as string[]) ?? Array.Empty<string>();
@@ -267,7 +267,7 @@
                          data-aos-duration="650">
                         <a href="@Url.Content(originalImagePaths[i])" data-fancybox="gallery">
                             <img src="@Url.Content(originalImagePaths[i])"
-                                 alt="Creative Designers Portfolio"
+                                 alt="Pixel Creator Portfolio"
                                  loading="@(i < 6 ? "eager" : "lazy")">
                             <div class="masonry-overlay">
                                 <span class="masonry-zoom-icon">&#43;</span>

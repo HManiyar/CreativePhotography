@@ -1,4 +1,4 @@
-@using CreativePhotography.Content
+﻿@using PixelCreator.Content
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="@WebsiteData.webTitle">
     <link rel="shortcut icon" href="/tablogo.png">
-    <meta name="description" content="Creative Designer – Premium Photography &amp; Album Design Services" />
+    <meta name="description" content="Pixel Creator – Premium Photography &amp; Album Design Services" />
     <meta name="keywords" content="wedding photography, album design, photo editing, collage design, pre-wedding, engagement" />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900|Oswald:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
@@ -24,9 +24,41 @@
 </head>
 <body>
 
-    <!-- Loading overlay — class names kept for Home.js compatibility -->
+    <!-- Pixel Creator page-load animation -->
     <div class="overlay"></div>
-    <div class="custom-loader"></div>
+    <div class="custom-loader">
+        <div class="pc-loader__card">
+            <div class="pc-loader__pixels">
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+                <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="pc-loader__brand">
+                <span class="pc-word-pixel">PIXEL</span>
+                <span class="pc-word-creator">CREATOR</span>
+            </div>
+            <div class="pc-loader__dots"><b></b><b></b><b></b></div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.custom-loader').style.display = 'block';
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    ['.custom-loader', '.overlay'].forEach(function (s) {
+                        var el = document.querySelector(s);
+                        if (!el) return;
+                        el.style.transition = 'opacity 0.65s ease';
+                        el.style.opacity = '0';
+                        setTimeout(function () { el.style.cssText = ''; }, 680);
+                    });
+                }, 400);
+            });
+        })();
+    </script>
 
     <div class="cd-wrap">
 
@@ -111,12 +143,12 @@
                         <a href="https://www.instagram.com/pixel_creator7?igsh=MWJrcmM3dDNzcDd6eQ=="
                            target="_blank" rel="noopener" class="cd-social-chip">
                             <span class="icon-instagram"></span>
-                            <span>@@creativephotographybychetan</span>
+                            <span>@@PixelCreatorbychetan</span>
                         </a>
                         <a href="https://www.facebook.com/chetandalwadiphotography/"
                            target="_blank" rel="noopener" class="cd-social-chip">
                             <span class="icon-facebook"></span>
-                            <span>Creative Designers</span>
+                            <span>Pixel Creator</span>
                         </a>
                     </div>
                 </div>
@@ -180,6 +212,19 @@
                         <li><a href="@Url.Action("AlbumDesign", "Home")">@PageHeaders.AlbumDesign</a></li>
                         <li><a href="@Url.Action("PhotoEditing", "Home")">@PageHeaders.PhotoEditing</a></li>
                         <li><a href="@Url.Action("CollageDesign", "Home")">@PageHeaders.CollageDesign</a></li>
+                    </ul>
+                </div>
+                <div class="cd-footer__col cd-footer__col--galleries">
+                    <h6 class="cd-footer__col-title">Galleries</h6>
+                    <ul class="cd-footer__list">
+                        <li><a href="@Url.Action("PreWedding", "Photography")">Pre-Wedding</a></li>
+                        <li><a href="@Url.Action("Engagement", "Photography")">Engagement</a></li>
+                        <li><a href="@Url.Action("Wedding", "Photography")">Wedding</a></li>
+                        <li><a href="@Url.Action("BabyShower", "Photography")">Maternity Shoot</a></li>
+                        <li><a href="@Url.Action("Birthday", "Photography")">Birthday</a></li>
+                        <li><a href="@Url.Action("Decoration", "Photography")">Decoration</a></li>
+                        <li><a href="@Url.Action("Photoshoot", "Photography")">Product Photoshoot</a></li>
+                        <li><a href="@Url.Action("IndustrialPhotoshoot", "Photography")">Industrial Photoshoot</a></li>
                     </ul>
                 </div>
                 <div class="cd-footer__col">

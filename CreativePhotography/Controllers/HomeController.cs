@@ -1,12 +1,12 @@
-﻿using CreativePhotography.Content;
-using CreativePhotography.IService;
-using CreativePhotography.Models;
+﻿using PixelCreator.Content;
+using PixelCreator.IService;
+using PixelCreator.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net.Mail;
 
-namespace CreativePhotography.Controllers
+namespace PixelCreator.Controllers
 {
     public class HomeController : Controller
     {

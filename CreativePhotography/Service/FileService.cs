@@ -1,13 +1,13 @@
-﻿using CreativePhotography.Content;
-using CreativePhotography.IRepository;
-using CreativePhotography.IService;
-using CreativePhotography.Models;
+﻿using PixelCreator.Content;
+using PixelCreator.IRepository;
+using PixelCreator.IService;
+using PixelCreator.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 
-namespace CreativePhotography.Service
+namespace PixelCreator.Service
 {
     public class FileService : IFileService
     {

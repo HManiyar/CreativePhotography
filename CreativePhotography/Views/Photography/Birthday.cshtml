@@ -1,6 +1,7 @@
-﻿@using CreativePhotography.Content
+﻿@using PixelCreator.Content
 
 @{
+    ViewBag.ActiveGallery = "Birthday";
 	Layout = "~/Views/Shared/_SharedUserView.cshtml";
 	string[] originalImagePaths = (ViewBag.OriginalImagePaths as string[]) ?? Array.Empty<string>();
 	string[] compressedImagePaths = (ViewBag.CompressedImagePaths as string[]) ?? Array.Empty<string>();
@@ -19,6 +20,7 @@
 	<div class="col-12 text-center">
 		<h2 class="heading">@PageHeaders.Birthday</h2>
 	</div>
+@await Html.PartialAsync("_PhotographyNav")
 	<div class="album-container">
 		<div class="album-inner">
 			@for (int i = 0; i < originalImagePaths.Length; i++)

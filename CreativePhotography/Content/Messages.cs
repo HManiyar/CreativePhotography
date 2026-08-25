@@ -1,4 +1,4 @@
-﻿namespace CreativePhotography.Content
+﻿namespace PixelCreator.Content
 {
     public static class Messages
     {
@@ -25,10 +25,17 @@
         public static readonly string BabyShower = "Maternity Shoot";
         public static readonly string Birthday = "Birthday";
         public static readonly string Decoration = "Decoration";
+        public static readonly string Photoshoot = "Product Photoshoot";
+        public static readonly string PhotoshootECommerce = "E-Commerce";
+        public static readonly string PhotoshootGlassProduct = "Glass Product";
+        public static readonly string PhotoshootIceCream = "Ice Cream";
+        public static readonly string PhotoshootPoches = "Poches";
+        public static readonly string PhotoshootStoneItems = "Stone Items";
+        public static readonly string IndustrialPhotoshoot = "Industrial Photoshoot";
     }
     public static class WebsiteData
     {
-        public static readonly string webTitle = "Creative Designer";
+        public static readonly string webTitle = "Pixel Creator";
     }
     public static class ImageOperations {
         public static readonly string successDeleteImage = "Image is deleted successfully";

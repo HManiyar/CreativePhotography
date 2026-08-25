@@ -1,4 +1,4 @@
-﻿namespace CreativePhotography.Models
+﻿namespace PixelCreator.Models
 {
     public class ContactUsModel
     {
