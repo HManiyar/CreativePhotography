@@ -8,5 +8,9 @@
         public string? Email { get; set; }
         public string? Subject { get; set; }
         public string? Message { get; set; }
+        public string? ServiceType { get; set; }
+        public DateTime? EventDate { get; set; }
+        public string? Location { get; set; }
+        public string? BudgetRange { get; set; }
     }
 }

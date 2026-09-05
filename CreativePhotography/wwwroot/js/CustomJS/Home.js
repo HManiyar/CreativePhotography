@@ -21,10 +21,15 @@
         var email = $('#email').val();
         var subject = $('#subject').val();
         var message = $('#message').val();
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        var serviceType = $('#serviceType').val();
+        var eventDate = $('#eventDate').val();
+        var location = $('#location').val();
+        var budgetRange = $('#budgetRange').val();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Validate input fields
-        if (!firstName.trim() || !lastName.trim() || !contact.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+        if (!firstName.trim() || !lastName.trim() || !contact.trim() || !email.trim() || !subject.trim() || !message.trim()
+            || !serviceType || !eventDate || !location.trim() || !budgetRange) {
             // Hide the loader
             $('.custom-loader, .overlay').hide();
             // Show validation message
@@ -60,7 +65,11 @@
                 Contact: contact,
                 Email: email,
                 Subject: subject,
-                Message: message
+                Message: message,
+                ServiceType: serviceType,
+                EventDate: eventDate,
+                Location: location,
+                BudgetRange: budgetRange
             },
             success: function (response) {
                 // Hide the loader on success

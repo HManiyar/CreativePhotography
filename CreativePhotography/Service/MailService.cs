@@ -72,7 +72,11 @@ namespace PixelCreator.Service
                             .Replace("{2}", userInfo.Contact)
                             .Replace("{3}", userInfo.Email)
                             .Replace("{4}", userInfo.Subject)
-                            .Replace("{5}", userInfo.Message);
+                            .Replace("{5}", userInfo.Message)
+                            .Replace("{6}", userInfo.ServiceType)
+                            .Replace("{7}", userInfo.EventDate?.ToString("dd-MMM-yyyy") ?? String.Empty)
+                            .Replace("{8}", userInfo.Location)
+                            .Replace("{9}", userInfo.BudgetRange);
         }
 
     }

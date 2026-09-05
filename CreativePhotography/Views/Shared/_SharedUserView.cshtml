@@ -176,6 +176,41 @@
                             </div>
                         </div>
                         <div class="cd-form-row">
+                            <div class="cd-form-group cd-form-group--fixed">
+                                <select id="serviceType" class="cd-form-input cd-form-select" required>
+                                    <option value="" disabled selected>Select Service Type</option>
+                                    <option value="Wedding &amp; Reception">Wedding &amp; Reception</option>
+                                    <option value="Pre-Wedding / Engagement Shoot">Pre-Wedding / Engagement Shoot</option>
+                                    <option value="Ring Ceremony">Ring Ceremony</option>
+                                    <option value="Commercial / Product Photography">Commercial / Product Photography</option>
+                                    <option value="Corporate Event / Conference">Corporate Event / Conference</option>
+                                    <option value="Birthday / Family Function">Birthday / Family Function</option>
+                                    <option value="Other Cinematography Project">Other Cinematography Project</option>
+                                </select>
+                                <label class="cd-form-label" for="serviceType">Service Type</label>
+                            </div>
+                            <div class="cd-form-group cd-form-group--fixed">
+                                <input type="date" id="eventDate" class="cd-form-input" required>
+                                <label class="cd-form-label" for="eventDate">Event Date</label>
+                            </div>
+                        </div>
+                        <div class="cd-form-row">
+                            <div class="cd-form-group">
+                                <input type="text" id="location" class="cd-form-input" placeholder=" " required>
+                                <label class="cd-form-label" for="location">City / Venue Name</label>
+                            </div>
+                            <div class="cd-form-group cd-form-group--fixed">
+                                <select id="budgetRange" class="cd-form-input cd-form-select" required>
+                                    <option value="" disabled selected>Select Budget Range</option>
+                                    <option value="Under &#8377;30,000">Under &#8377;30,000</option>
+                                    <option value="&#8377;30,000 - &#8377;60,000">&#8377;30,000 - &#8377;60,000</option>
+                                    <option value="&#8377;60,000 - &#8377;1,00,000">&#8377;60,000 - &#8377;1,00,000</option>
+                                    <option value="&#8377;1,00,000+">&#8377;1,00,000+</option>
+                                </select>
+                                <label class="cd-form-label" for="budgetRange">Estimated Budget Range</label>
+                            </div>
+                        </div>
+                        <div class="cd-form-row">
                             <div class="cd-form-group cd-form-group--full">
                                 <input type="text" id="subject" class="cd-form-input" placeholder=" ">
                                 <label class="cd-form-label" for="subject">Subject</label>

@@ -543,6 +543,30 @@
     padding-top: 0.6rem;
 }
 
+/* Select & date fields always show a value/placeholder, so their label stays floated */
+.cd-form-group--fixed .cd-form-label {
+    top: 0.2rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #efd686;
+}
+
+.cd-form-select {
+    cursor: pointer;
+}
+
+.cd-form-select option {
+    color: #222;
+    background: #fff;
+}
+
+.cd-form-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
 /* ── Footer ──────────────────────────────────────────────── */
 .cd-footer {
     background: #090909;
