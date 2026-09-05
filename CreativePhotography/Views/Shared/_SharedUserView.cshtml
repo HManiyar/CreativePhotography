@@ -190,7 +190,9 @@
                                 <label class="cd-form-label" for="serviceType">Service Type</label>
                             </div>
                             <div class="cd-form-group cd-form-group--fixed">
-                                <input type="date" id="eventDate" class="cd-form-input" required>
+                                <input type="date" id="eventDate" class="cd-form-input" required
+                                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                       max="@DateTime.Today.AddMonths(6).ToString("yyyy-MM-dd")">
                                 <label class="cd-form-label" for="eventDate">Event Date</label>
                             </div>
                         </div>

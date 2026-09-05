@@ -154,6 +154,12 @@ namespace PixelCreator.Controllers
         [HttpPost]
         public async Task<ActionResult> SendMail(ContactUsModel form)
         {
+            DateTime today = DateTime.Today;
+            if (form.EventDate == null || form.EventDate.Value.Date < today || form.EventDate.Value.Date > today.AddMonths(6))
+            {
+                return Json(EmailOperations.invalidEventDate);
+            }
+
             string message = await _mailService.SendMailToAdmin(form);
             if (message.Equals(EmailOperations.successSendEmail))
                 return Json(message);

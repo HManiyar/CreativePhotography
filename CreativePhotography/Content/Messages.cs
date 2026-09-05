@@ -44,6 +44,7 @@
     public static class EmailOperations {
         public static readonly string successSendEmail = "Congratulations! Your information has been securely sent to our talented photographer. Get ready to embark on your creative journey! Thank you for entrusting us with your details.";
         public static readonly string failureSendEmail = "Failed to send email";
+        public static readonly string invalidEventDate = "Event date must be today or a future date, within the next 6 months";
         public static readonly string emailSubject = "New Inquiry!";
     }
     public static class ErrorMessages {

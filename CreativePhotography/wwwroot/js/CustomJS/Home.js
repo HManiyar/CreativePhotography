@@ -46,6 +46,21 @@
             return; // Exit the function if contact number is invalid
         }
 
+        // Validate event date: no past dates, and no more than 6 months in the future
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        var maxEventDate = new Date(today);
+        maxEventDate.setMonth(maxEventDate.getMonth() + 6);
+        var selectedEventDate = new Date(eventDate + 'T00:00:00');
+
+        if (isNaN(selectedEventDate.getTime()) || selectedEventDate < today || selectedEventDate > maxEventDate) {
+            // Hide the loader
+            $('.custom-loader, .overlay').hide();
+            // Show validation message
+            alert("Event date must be today or a future date, within the next 6 months");
+            return; // Exit the function if event date is out of range
+        }
+
         // Validate email address
         if (!emailPattern.test(email)) {
             // Hide the loader

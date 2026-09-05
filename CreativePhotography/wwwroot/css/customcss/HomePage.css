@@ -555,11 +555,18 @@
 
 .cd-form-select {
     cursor: pointer;
+    color-scheme: light;
 }
 
 .cd-form-select option {
     color: #222;
     background: #fff;
+}
+
+.cd-form-input[type="date"] {
+    -moz-appearance: auto;
+    appearance: auto;
+    color-scheme: light;
 }
 
 .cd-form-input[type="date"]::-webkit-calendar-picker-indicator {
